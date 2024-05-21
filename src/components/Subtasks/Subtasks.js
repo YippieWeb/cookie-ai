@@ -22,7 +22,7 @@ function Subtasks() {
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Watch the assignment information session recording</p>
+                            <p className='title'>Watch the Prof. Redekopp's recording</p>
                             <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
                             <div className='tools'>
                                 <div className='priority'>
@@ -30,9 +30,13 @@ function Subtasks() {
                                     <div className='level'>
                                         <p>3</p>
                                     </div>
+                                    <div className='time'>
+                                        <p><span>45m</span> estimated</p>
+                                    </div>
                                 </div>
                                 <div className='edit'>
                                     <i class="fa-regular fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </div>
                             </div>
                         </div>
@@ -40,17 +44,21 @@ function Subtasks() {
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Watch the assignment information session recording</p>
+                            <p className='title'>Read Codio instructions and starter code</p>
                             <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
                             <div className='tools'>
                                 <div className='priority'>
                                     <i class="fa-solid fa-fire"></i>
                                     <div className='level'>
-                                        <p>3</p>
+                                        <p>2</p>
+                                    </div>
+                                    <div className='time'>
+                                        <p><span>15m</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
                                     <i class="fa-regular fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </div>
                             </div>
                         </div>

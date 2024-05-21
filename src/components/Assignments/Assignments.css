@@ -39,7 +39,7 @@
 }
 
 .assignments textarea {
-  width: 600px;
+  width: calc(100% - 45px);
   height: 300px;
   padding: 20px;
   border-radius: 8px;

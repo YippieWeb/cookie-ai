@@ -44,9 +44,9 @@
 }
 
 .projects .projects-container .title:hover {
-  background-color: #f9f9f9;
+  background-color: #0054dc0f;
 }
 
 .projects .projects-container .title.active {
-  background-color: #f9f9f9;
+  background-color: #0054dc0f;
 }

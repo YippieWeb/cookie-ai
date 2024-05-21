@@ -1,5 +1,20 @@
 .main-header {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1.5px solid #DFE1E8;
+}
+
+.main-header .left {
+  display: flex;
+}
+
+.main-header .navbar {
+  display: flex;
+  gap: 30px;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2A4669;
 }
 
 .main-header .logo {
@@ -9,5 +24,22 @@
 .main-header .logo .cookie-logo {
   width: 30px;
   height: 30px;
-  padding: 10px;
+  padding: 15px 25px;
+}
+
+.main-header .right {
+  display: flex;
+  color: #2A4669;
+  padding: 10px 20px 0 0;
+}
+
+.main-header .right p {
+  font-size: 14px;
+  padding: 12px 15px 0 0;
+}
+
+.main-header .right i {
+  padding-top: 5px;
+  font-size: 30px;
+  color: #FFA200;
 }

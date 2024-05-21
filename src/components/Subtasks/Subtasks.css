@@ -106,11 +106,18 @@
   color: #4A5568;
 }
 
-.subtasks .subtask .tools i.fa-solid {
+.subtasks .subtask .tools .time p {
+  color: #4A5568;
+  font-size: 12px;
+  padding: 3px 0 0 10px;
+}
+
+.subtasks .subtask .tools .priority i {
   color: #F05E5E;
   padding-right: 8px;
 }
 
-.subtasks .subtask .tools i.fa-regular {
+.subtasks .subtask .tools .edit i {
   color: #808FA5;
+  padding-left: 10px;
 }
