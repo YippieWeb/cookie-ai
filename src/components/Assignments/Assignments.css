@@ -1,0 +1,102 @@
+.assignments .wrapper {
+  width: 95%;
+  margin: auto;
+}
+
+.assignments .logo {
+  display: flex;
+}
+
+.assignments .logo .cookie-logo {
+  width: 20px;
+  height: 20px;
+  padding: 10px 10px 10px 0;
+}
+
+.assignments .logo span {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 8px;
+  color: #032C53;
+}
+
+.assignments .header p {
+  margin: 0;
+}
+
+.assignments .header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 0;
+  color: #032C53;
+}
+
+.assignments .header p {
+  font-size: 14px;
+  color: #032C53;
+  padding-bottom: 20px;
+}
+
+.assignments textarea {
+  width: 560px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1.5px solid #DFE1E8;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  resize: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 26px;
+  color: #032C53;
+}
+
+.assignments .send-button {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0053DC;
+  transform: translateX(375px) translateY(-85px);
+}
+
+.assignments .send-button i {
+  font-size: 16px;
+  color: #fff;
+}
+
+.assignments p {
+  font-size: 14px;
+}
+
+.assignments .upload {
+  display: flex;
+  padding-top: 20px;
+}
+
+.assignments .upload .upload-button {
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 10px 15px;
+  background-color: #0053DC;
+  color: #fff;
+}
+
+.assignments .upload p {
+  padding-top: 10px;
+}
+
+.assignments .upload .upload-button p { 
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.assignments .upload .upload-button i {
+  font-size: 14px;
+  padding-left: 10px;
+}

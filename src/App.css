@@ -7,6 +7,10 @@ body {
   box-sizing: border-box;
 }
 
+h1, h2, h3, p {
+  margin: 0;
+}
+
 /* dashboard */
 .columns {
   display: flex;
@@ -15,18 +19,18 @@ body {
 }
 
 .project-column {
-  flex: 2;
+  flex: 1;
   padding: 20px;
-  border-right: 1px solid #DFE1E8;
+  border-right: 1.5px solid #DFE1E8;
 }
 
 .assignment-column {
-  flex: 4;
+  flex: 6;
   padding: 20px;
 }
 
 .subtask-column {
-  flex: 3;
+  flex: 4;
   padding: 20px;
-  border-left: 1px solid #DFE1E8;
+  border-left: 1.5px solid #DFE1E8;
 }
