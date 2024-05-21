@@ -39,8 +39,8 @@
 }
 
 .assignments textarea {
-  width: 560px;
-  height: 400px;
+  width: 600px;
+  height: 300px;
   padding: 20px;
   border-radius: 8px;
   border: 1.5px solid #DFE1E8;
@@ -58,7 +58,7 @@
   border: none;
   border-radius: 5px;
   background-color: #0053DC;
-  transform: translateX(375px) translateY(-85px);
+  transform: translateX(420px) translateY(-85px);
 }
 
 .assignments .send-button i {

@@ -1,0 +1,116 @@
+.subtasks .wrapper {
+  width: 95%;
+  margin: auto;
+}
+
+.subtasks .header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4A5568;
+  padding-bottom: 20px;
+}
+
+.subtasks .header .title i {
+  padding-right: 10px;
+}
+
+.subtasks .header .title p, i {
+  padding-top: 2px;
+}
+
+.subtasks .header .export p, i {
+  padding-top: 2px;
+}
+
+.subtasks .header .title {
+  display: flex;
+}
+
+.subtasks .header .export {
+  display: flex;
+}
+
+.subtasks .header .export #export-options {
+  border: none;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #F5F6F7;
+  color: #4A5568;
+  padding: 2px 0px 2px 5px;
+  margin: 0 5px;
+}
+
+.subtasks .subtask {
+  position: relative;
+  display: flex;
+  background-color: #F7F7F8;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.subtasks .subtask .stripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px; 
+  background-color: #81EBF2; 
+  border-top-left-radius: 8px; 
+  border-bottom-left-radius: 8px; 
+}
+
+.subtasks .subtask .wrapper {
+  padding: 15px 20px 15px 25px; 
+  flex-grow: 1;
+}
+
+.subtasks .subtask p.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #032C53;
+}
+
+.subtasks .subtask p.description {
+  font-size: 12px;
+  line-height: 20px;
+  padding: 5px 0 15px 0;
+  color: #808FA5;
+}
+
+.subtasks .subtask .tools {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtasks .subtask .tools .priority {
+  display: flex;
+}
+
+.subtasks .subtask .tools .level {
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  height: fit-content;
+  margin-top: 4px;
+}
+
+.subtasks .subtask .tools .level p {
+  padding: 1px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4A5568;
+}
+
+.subtasks .subtask .tools i.fa-solid {
+  color: #F05E5E;
+  padding-right: 8px;
+}
+
+.subtasks .subtask .tools i.fa-regular {
+  color: #808FA5;
+}
