@@ -1,0 +1,20 @@
+.main-header {
+  border-bottom: 1px solid #DFE1E8;
+}
+
+.main-header .logo {
+  display: flex;
+}
+  
+.main-header .logo .cookie-logo {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+}
+
+.main-header .logo span {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 12px;
+  color: #032C53;
+}

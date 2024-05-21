@@ -1,10 +1,32 @@
-.dashboard {
-  display: flex;
-  justify-content: space-between;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.project-column, .assignment-column, .subtask-column {
-  flex: 1;
+/* dashboard */
+.columns {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.project-column {
+  flex: 2;
   padding: 20px;
-  border: 1px solid #ccc;
+  border-right: 1px solid #DFE1E8;
+}
+
+.assignment-column {
+  flex: 4;
+  padding: 20px;
+}
+
+.subtask-column {
+  flex: 3;
+  padding: 20px;
+  border-left: 1px solid #DFE1E8;
 }
