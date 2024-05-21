@@ -14,7 +14,7 @@
   padding-top: 20px;
   font-size: 14px;
   font-weight: 500;
-  color: #2A4669;
+  color: #505F79;
 }
 
 .main-header .logo {
@@ -29,17 +29,16 @@
 
 .main-header .right {
   display: flex;
-  color: #2A4669;
+  color: #505F79;
   padding: 10px 20px 0 0;
 }
 
 .main-header .right p {
   font-size: 14px;
-  padding: 12px 15px 0 0;
+  padding: 10px 15px 0 0;
 }
 
 .main-header .right i {
-  padding-top: 5px;
   font-size: 30px;
-  color: #FFA200;
+  color: #FFAB00;
 }

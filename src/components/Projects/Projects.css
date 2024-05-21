@@ -6,7 +6,7 @@
 
 .projects .header h2 {
   margin: 0;
-  color: #032C53;
+  color: #172B4D;
 }
 
 .projects .header .add-project {
@@ -14,12 +14,12 @@
   height: 35px;
   border: none;
   border-radius: 30px;
-  background-color: #F5F6F7;
+  background-color: #F4F5F7;
 }
 
 .projects .header i {
   font-size: 16px;
-  color: #032C53;
+  color: #172B4D;
 }
 
 .projects .projects-container .title {
@@ -35,7 +35,7 @@
 
 .projects .projects-container .title p {
   font-size: 14px;
-  color: #032C53;
+  color: #172B4D;
   font-family: 'Inter', sans-serif;
   margin: 15px 15px 15px 10px;
   white-space: nowrap;
@@ -44,9 +44,9 @@
 }
 
 .projects .projects-container .title:hover {
-  background-color: #0054dc0f;
+  background-color: #DEEBFF;
 }
 
 .projects .projects-container .title.active {
-  background-color: #0054dc0f;
+  background-color: #DEEBFF;
 }
