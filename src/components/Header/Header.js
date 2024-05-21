@@ -4,22 +4,46 @@ import './Header.css';
 
 function Header() {
     return (
-        <div className='main-header'>
-            <div className='left'>
-                <div className='logo'>
-                    <img src={logo} className='cookie-logo' alt="logo" />
-                </div> 
-                <div className='navbar'>
-                    <p>Dashboard</p>
-                    <p>Calendar</p>
-                    <p>To-do List</p>
-                </div>
+        // <div className='main-header'>
+        //     <div className='left'>
+        //         <div className='logo'>
+        //             <img src={logo} className='cookie-logo' alt="logo" />
+        //         </div> 
+        //         <div className='navbar'>
+        //             <p>Dashboard</p>
+        //             <p>Calendar</p>
+        //             <p>To-do List</p>
+        //         </div>
+        //     </div>
+        //     <div className='right'>
+        //         <p>Hi, Jasmine!</p>
+        //         <i class="fa-solid fa-circle-user"></i>
+        //     </div>
+        // </div>
+        <nav className="navbar">
+            <div className="navbar-left">
+                <a href="/" className="logo">
+                <img src={logo} className='logo' alt="logo" />
+                </a>
+                <ul className="nav-links">
+                    <li>
+                        <a href="/calendar">Calendar</a>
+                    </li>
+                    <li>
+                        <a href="/to-do">To-do List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
             </div>
-            <div className='right'>
+            <div className="navbar-right">
                 <p>Hi, Jasmine!</p>
-                <i class="fa-solid fa-circle-user"></i>
+                <a href="/account" className="user-icon">
+                    <i className="fa-solid fa-circle-user"></i>
+                </a>
             </div>
-        </div>
+        </nav>
     );
 }
 

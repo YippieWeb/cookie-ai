@@ -19,10 +19,10 @@ function Assignments() {
                     <p>or</p>
                     <button className='upload-button'>
                         <p>Upload PDF</p>
-                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        <i className="fa-solid fa-arrow-up-from-bracket"></i>
                     </button>
                     <button className='send-button'>
-                    <i class="fa-solid fa-paper-plane"></i>
+                    <i className="fa-solid fa-paper-plane"></i>
                     </button>
                 </div>
             </div>

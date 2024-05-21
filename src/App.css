@@ -21,7 +21,7 @@ h1, h2, h3, p {
 .project-column {
   flex: 1;
   padding: 20px;
-  border-right: 1.5px solid #DFE1E8;
+  border-right: 1.5px solid #DFE1E6;
 }
 
 .assignment-column {
@@ -32,5 +32,5 @@ h1, h2, h3, p {
 .subtask-column {
   flex: 4;
   padding: 20px;
-  border-left: 1.5px solid #DFE1E8;
+  border-left: 1.5px solid #DFE1E6;
 }

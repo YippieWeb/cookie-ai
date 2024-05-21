@@ -1,7 +1,7 @@
-.main-header {
+/* .main-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1.5px solid #DFE1E8;
+  border-bottom: 1.5px solid #DFE1E6;
 }
 
 .main-header .left {
@@ -41,4 +41,70 @@
 .main-header .right i {
   font-size: 30px;
   color: #FFAB00;
+} */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1.5px solid #DFE1E6;
+}
+
+.navbar-left {
+  display: flex;
+  padding-left: 8px;
+}
+
+.navbar-left .logo {
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-left .nav-links {
+  padding: 2px 0 0 24px;
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+}
+
+.navbar-left .nav-links li {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border-radius: 4px;
+  transition: .3s ease;
+}
+
+.navbar-left .nav-links li:hover {
+  background-color: #F4F5F7;
+}
+
+.navbar-left .nav-links a {
+  color: #505F79;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.navbar-right p {
+  color: #505F79;
+  font-size: 14px;
+}
+
+.navbar-right .user-icon {
+  color: #FFAB00;
+  font-size: 24px;
+  text-decoration: none;
+  margin-left: 1rem;
+  position: relative;
 }

@@ -7,7 +7,7 @@ function Subtasks() {
             <div className='wrapper'>
                 <div className='header'>
                     <div className='title'>
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <i className="fa-solid fa-wand-magic-sparkles"></i>
                         <p>AI-generated sub-tasks</p>
                     </div>
                     <div className='export'>
@@ -26,7 +26,7 @@ function Subtasks() {
                             <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
                             <div className='tools'>
                                 <div className='priority'>
-                                    <i class="fa-solid fa-fire"></i>
+                                    <i className="fa-solid fa-fire"></i>
                                     <div className='level'>
                                         <p>3</p>
                                     </div>
@@ -35,8 +35,8 @@ function Subtasks() {
                                     </div>
                                 </div>
                                 <div className='edit'>
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    <i class="fa-solid fa-trash-can"></i>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                    <i className="fa-solid fa-trash-can"></i>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ function Subtasks() {
                             <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
                             <div className='tools'>
                                 <div className='priority'>
-                                    <i class="fa-solid fa-fire"></i>
+                                    <i className="fa-solid fa-fire"></i>
                                     <div className='level'>
                                         <p>2</p>
                                     </div>
@@ -57,8 +57,8 @@ function Subtasks() {
                                     </div>
                                 </div>
                                 <div className='edit'>
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                    <i class="fa-solid fa-trash-can"></i>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                    <i className="fa-solid fa-trash-can"></i>
                                 </div>
                             </div>
                         </div>
