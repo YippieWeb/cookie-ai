@@ -27,3 +27,31 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+// Projects
+const Project = require('./models/Project'); // Ensure this path is correct based on your project structure
+
+// Route to create a new project
+app.post('/projects', async (req, res) => {
+    const { projectName } = req.body;
+    const newProject = new Project({ projectName });
+
+    try {
+        await newProject.save();
+        res.status(201).json(newProject);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Route to retrieve all projects
+app.get('/projects', async (req, res) => {
+    try {
+        const projects = await Project.find();
+        console.log("Retrieved projects:", projects); // Log the retrieved projects
+        res.status(200).json(projects);
+    } catch (error) {
+        console.error("Error fetching projects:", error);
+        res.status(500).json({ message: error.message });
+    }
+});

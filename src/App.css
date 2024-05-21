@@ -19,13 +19,13 @@ h1, h2, h3, p {
 }
 
 .project-column {
-  flex: 1;
+  flex: 3;
   padding: 20px;
   border-right: 1.5px solid #DFE1E6;
 }
 
-.assignment-column {
-  flex: 7;
+.instruction-column {
+  flex: 8;
   padding: 20px;
 }
 

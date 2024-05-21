@@ -1,30 +1,30 @@
-.assignments .wrapper {
+.instructions .wrapper {
   width: 95%;
   margin: auto;
 }
 
-.assignments .logo {
+.instructions .logo {
   display: flex;
 }
 
-.assignments .logo .cookie-logo {
+.instructions .logo .cookie-logo {
   width: 20px;
   height: 20px;
   padding: 10px 10px 10px 0;
 }
 
-.assignments .logo span {
+.instructions .logo span {
   font-size: 20px;
   font-weight: 600;
   padding-top: 8px;
   color: #172B4D;
 }
 
-.assignments .header p {
+.instructions .header p {
   margin: 0;
 }
 
-.assignments .header h2 {
+.instructions .header h2 {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
@@ -32,13 +32,13 @@
   color: #172B4D;
 }
 
-.assignments .header p {
+.instructions .header p {
   font-size: 14px;
   color: #172B4D;
   padding-bottom: 20px;
 }
 
-.assignments textarea {
+.instructions textarea {
   width: calc(100% - 40px);
   height: 300px;
   padding: 20px;
@@ -52,7 +52,7 @@
   color: #172B4D;
 }
 
-.assignments .send-button {
+.instructions .send-button {
   width: 35px;
   height: 35px;
   border: none;
@@ -61,21 +61,21 @@
   transform: translateX(420px) translateY(-85px);
 }
 
-.assignments .send-button i {
+.instructions .send-button i {
   font-size: 16px;
   color: #fff;
 }
 
-.assignments p {
+.instructions p {
   font-size: 14px;
 }
 
-.assignments .upload {
+.instructions .upload {
   display: flex;
   padding-top: 20px;
 }
 
-.assignments .upload .upload-button {
+.instructions .upload .upload-button {
   display: flex;
   border: none;
   border-radius: 5px;
@@ -85,18 +85,18 @@
   color: #fff;
 }
 
-.assignments .upload p {
+.instructions .upload p {
   padding-top: 10px;
 }
 
-.assignments .upload .upload-button p { 
+.instructions .upload .upload-button p { 
   padding: 0;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
 
-.assignments .upload .upload-button i {
+.instructions .upload .upload-button i {
   font-size: 14px;
   padding-left: 10px;
 }

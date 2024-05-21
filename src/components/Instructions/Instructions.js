@@ -1,10 +1,10 @@
 import logo from '../assets/logo-blue.png';
 import React from 'react';
-import './Assignments.css';
+import './Instructions.css';
 
-function Assignments() {
+function Instructions() {
     return (
-        <div className='assignments'>
+        <div className='instructions'>
             <div className='wrapper'>
                 <div className='logo'>
                     <img src={logo} className='cookie-logo' alt="logo" />
@@ -30,4 +30,4 @@ function Assignments() {
     );
 }
 
-export default Assignments;
+export default Instructions;
