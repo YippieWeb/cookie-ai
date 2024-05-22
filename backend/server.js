@@ -33,8 +33,8 @@ const Project = require('./models/Project'); // Ensure this path is correct base
 
 // Route to create a new project
 app.post('/projects', async (req, res) => {
-    const { projectName } = req.body;
-    const newProject = new Project({ projectName });
+    const { projectName, description } = req.body;
+    const newProject = new Project({ projectName, description });
 
     try {
         await newProject.save();

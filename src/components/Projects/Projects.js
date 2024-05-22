@@ -17,6 +17,21 @@ function Projects() {
         setShowPopup(!showPopup);
     };
 
+    const addProject = (project) => {
+        fetch('http://localhost:3001/projects', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(project),
+        })
+        .then(response =>response.json())
+        .then(newProject => {
+            setProjects([...projects, newProject]);
+        })
+        .catch(error => console.error('Error adding project:', error));
+    }
+
     return (
         <div className='projects'>
             <div className='header'>
@@ -32,7 +47,7 @@ function Projects() {
                     </button>
                 ))}
             </div>
-            <ProjectPopUp show={showPopup} onClose={togglePopup} />
+            <ProjectPopUp show={showPopup} onClose={togglePopup} onAddProject={addProject} />
         </div>
     );
 }
