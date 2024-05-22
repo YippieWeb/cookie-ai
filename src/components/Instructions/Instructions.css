@@ -20,8 +20,13 @@
   color: #172B4D;
 }
 
-.instructions .header p {
+.instructions .header span.description {
+  font-weight: 600;
+}
+
+.instructions .header p.description {
   margin: 0;
+  line-height: 24px;
 }
 
 .instructions .header h2 {
@@ -57,8 +62,13 @@
   height: 35px;
   border: none;
   border-radius: 5px;
-  background-color: #0052CC;
+  background-color: #0b66e4;
   transform: translateX(440px) translateY(-85px);
+  transition: .5s ease;
+}
+
+.instructions .send-button:hover {
+  background-color: #0052CC;
 }
 
 .instructions .send-button i {
@@ -81,8 +91,13 @@
   border-radius: 5px;
   margin-left: 20px;
   padding: 10px 15px;
-  background-color: #0052CC;
+  background-color: #0b66e4;
   color: #fff;
+  transition: .5s ease;
+}
+
+.instructions .upload .upload-button:hover {
+  background-color: #0052CC;
 }
 
 .instructions .upload p {
@@ -93,10 +108,11 @@
   padding: 0;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .instructions .upload .upload-button i {
   font-size: 14px;
   padding-left: 10px;
+  color: #fff;
 }

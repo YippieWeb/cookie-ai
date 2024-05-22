@@ -12,6 +12,10 @@ function Instructions() {
                 </div>
                 <div className='header'>
                     <h2>CSCI-103 Project 3 - Connecting Components</h2>
+                    <p className='description'>
+                        <span className='description'>Description: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Euismod elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet dictum sit amet. At tellus at urna condimentum.
+                    </p>
                     <p>Paste your assignment instructions below.</p>
                 </div>
                 <textarea className='instruction'></textarea>

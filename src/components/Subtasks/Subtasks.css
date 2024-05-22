@@ -17,6 +17,7 @@
 }
 
 .subtasks .header .title p, i {
+  color: #8993A4;
   padding-top: 2px;
 }
 
@@ -47,7 +48,7 @@
 .subtasks .subtask {
   position: relative;
   display: flex;
-  background-color: #F4F5F7;
+  background-color: #F5F7FA;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -59,7 +60,7 @@
   top: 0;
   bottom: 0;
   width: 10px; 
-  background-color: #0052CC40; 
+  background-color: #B3D4FF;
   border-top-left-radius: 8px; 
   border-bottom-left-radius: 8px; 
 }
@@ -80,7 +81,7 @@
   font-size: 12px;
   line-height: 20px;
   padding: 5px 0 15px 0;
-  color: #8993A4;
+  color: #6B778C;
 }
 
 .subtasks .subtask .tools {
