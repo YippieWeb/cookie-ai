@@ -10,9 +10,16 @@ function Projects({ onSelectProject }) {
     useEffect(() => {
         fetch('http://localhost:3001/projects')
             .then(response => response.json())
-            .then(data => setProjects(data))
+            .then(data => {
+                setProjects(data);
+                if (data.length > 0) {
+                    const mostRecentProjectId = data[0]._id;
+                    setActiveProjectId(mostRecentProjectId);
+                    onSelectProject(mostRecentProjectId);
+                }
+            })
             .catch(error => console.error('Error fetching projects:', error));
-    }, []);
+    }, [onSelectProject]);
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -28,7 +35,9 @@ function Projects({ onSelectProject }) {
         })
         .then(response => response.json())
         .then(newProject => {
-            setProjects([...projects, newProject]);
+            setProjects([newProject, ...projects]); // Add the new project at the beginning
+            setActiveProjectId(newProject._id); // Automatically select the newly added project
+            onSelectProject(newProject._id);
         })
         .catch(error => console.error('Error adding project:', error));
     };
