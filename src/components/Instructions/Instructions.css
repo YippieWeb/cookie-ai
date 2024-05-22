@@ -58,7 +58,7 @@
   border: none;
   border-radius: 5px;
   background-color: #0052CC;
-  transform: translateX(420px) translateY(-85px);
+  transform: translateX(440px) translateY(-85px);
 }
 
 .instructions .send-button i {
