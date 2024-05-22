@@ -34,7 +34,7 @@
   transition: .3s ease;
 }
 
-.navbar-left .nav-links li:hover {
+.navbar-left .nav-links li:hover { 
   background-color: #F4F5F7;
 }
 
@@ -43,6 +43,10 @@
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+}
+
+.navbar-left .nav-links li.active a {
+  color: #0052CC;
 }
 
 .navbar-right {

@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // Middleware to parse JSON
+app.use(express.json()); // middleware to parse JSON
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -17,21 +17,15 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 
-// Define routes
+// define routes
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the app!" });
 });
 
-// Start server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// projects
+const Project = require('./models/Project'); // ensure this path is correct based on your project structure
 
-// Projects
-const Project = require('./models/Project'); // Ensure this path is correct based on your project structure
-
-// Route to create a new project
+// route to create a new project
 app.post('/projects', async (req, res) => {
     const { projectName, description } = req.body;
     const newProject = new Project({ projectName, description });
@@ -44,14 +38,46 @@ app.post('/projects', async (req, res) => {
     }
 });
 
-// Route to retrieve all projects
+// route to retrieve all projects
 app.get('/projects', async (req, res) => {
     try {
-        const projects = await Project.find();
-        console.log("Retrieved projects:", projects); // Log the retrieved projects
+        const projects = await Project.find().sort({ createdAt: -1 }); // sort by createdAt in descending order
+        console.log("Retrieved projects:", projects); // log the retrieved projects
         res.status(200).json(projects);
     } catch (error) {
         console.error("Error fetching projects:", error);
         res.status(500).json({ message: error.message });
     }
+});
+
+// route to retrieve a project by its ID
+app.get('/projects/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const project = await Project.findById(id);
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+        res.status(200).json(project);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// route to update instructionText for a specific project
+app.put('/projects/:projectId', async (req, res) => {
+    const { projectId } = req.params;
+    const { instructionText } = req.body;
+    try {
+        const project = await Project.findByIdAndUpdate(projectId, { instructionText }, { new: true });
+        res.status(200).json(project);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// start server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });

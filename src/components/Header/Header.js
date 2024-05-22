@@ -16,7 +16,7 @@ function Header() {
                     <li>
                         <a href="/to-do">To-do List</a>
                     </li>
-                    <li>
+                    <li className='active'>
                         <a href="/dashboard">Dashboard</a>
                     </li>
                 </ul>

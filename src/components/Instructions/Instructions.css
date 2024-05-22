@@ -20,13 +20,20 @@
   color: #172B4D;
 }
 
-.instructions .header span.description {
-  font-weight: 600;
+.instructions .header .desc {
+  display: flex;
+  padding-bottom: 10px;
 }
 
-.instructions .header p.description {
+.instructions .header .desc .left p {
+  line-height: 24px;
+  padding-right: 20px;
+}
+
+.instructions .header .right p.description {
   margin: 0;
   line-height: 24px;
+  color: #6B778C;
 }
 
 .instructions .header h2 {
@@ -44,10 +51,10 @@
 }
 
 .instructions textarea {
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   height: 300px;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 15px;
+  border-radius: 5px;
   border: 1.5px solid #DFE1E6;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
   resize: none;

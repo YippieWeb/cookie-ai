@@ -20,10 +20,32 @@ function Subtasks() {
                 </div>
                 <div className='subtasks-container'>
                     <div className='subtask'>
+                            <div className='stripe'></div>
+                            <div className='wrapper'>
+                                <p className='title'>Finalize the instructions column front-end and userflow</p>
+                                <p className='description'>Decide on how to handle and display multiple files and text input.</p>
+                                <div className='tools'>
+                                    <div className='priority'>
+                                        <i className="fa-solid fa-fire"></i>
+                                        <div className='level'>
+                                            <p>3</p>
+                                        </div>
+                                        <div className='time'>
+                                            <p><span>45m</span> estimated</p>
+                                        </div>
+                                    </div>
+                                    <div className='edit'>
+                                        <i className="fa-regular fa-pen-to-square"></i>
+                                        <i className="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Watch the Prof. Redekopp's recording</p>
-                            <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
+                            <p className='title'>Integrate backend into the instructions column</p>
+                            <p className='description'>Ensure project name and description are updated depending on which project is selected.</p>
                             <div className='tools'>
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
@@ -44,7 +66,7 @@ function Subtasks() {
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Read Codio instructions and starter code</p>
+                            <p className='title'>Set up Instruction.js in models folder</p>
                             <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
                             <div className='tools'>
                                 <div className='priority'>
