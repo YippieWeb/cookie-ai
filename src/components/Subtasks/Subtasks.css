@@ -46,6 +46,7 @@
 }
 
 .subtasks .subtask {
+  min-width: 300px;
   position: relative;
   display: flex;
   background-color: #F5F7FA;

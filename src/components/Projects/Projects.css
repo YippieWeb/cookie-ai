@@ -55,3 +55,18 @@
 .projects .projects-container .title.active {
   background-color: #DEEBFF;
 }
+
+.projects .projects-container .delete-button {
+  transform: translateX(220px) translateY(-35px);
+  background-color: transparent;
+  border: none;
+}
+
+.projects .projects-container .delete-button i {
+  color: #6B778C;
+  transition: .5s ease;
+}
+
+.projects .projects-container .delete-button i:hover {
+  color: #FF7452;
+}

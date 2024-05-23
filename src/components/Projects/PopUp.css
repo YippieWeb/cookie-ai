@@ -1,3 +1,6 @@
+/* pop up window styling */
+/* shared between add project and delete project */
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -15,12 +18,13 @@
   width: 500px;
   height: 300px;
   background: #fff;
-  padding: 40px; 
-  border-radius: 8px;
+  padding: 30px 40px; 
+  border-radius: 10px;
 }
 
 .popup-content h2 {
   color: #172B4D;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -58,7 +62,7 @@
   display: flex;
 }
 
-.close-button {
+.popup-content .buttons .confirm-button, .cancel-button {
   padding: 10px 20px;
   color: #fff;
   border: none;
@@ -70,20 +74,43 @@
   transition: .5s ease;
 }
 
-.close-button.add {
+.confirm-button {
   background-color: #0b66e4;
   margin-right: 10px;
 }
 
-.close-button.cancel {
+.cancel-button {
+  border: 1.5px solid #EBECF0;
   background-color: #fff;
-  color: #505F79;
+  color: #172B4D;
 }
 
-.close-button.add:hover {
+.confirm-button:hover {
   background-color: #0052CC;
 }
 
-.close-button.cancel:hover {
-  background-color: #F4F5F7;
+.cancel-button:hover {
+  background-color: #EBECF0;
+}
+
+/* delete project specific styling */
+.delete-project p {
+  color: #505F79;
+  font-size: 14px;
+  line-height: 26px;
+  padding-bottom: 25px;
+}
+
+.delete-project .popup-content {
+  height: 170px;
+  width: 300px;
+  padding: 30px;
+}
+
+.delete-project .confirm-button {
+  background-color: #FF5630;
+}
+
+.delete-project .confirm-button:hover {
+  background-color: #DE350B;
 }

@@ -60,7 +60,7 @@ function Instructions({ projectId }) {
                     <span>Cookie AI</span>
                 </div>
                 <div className='header'>
-                    <h2>{title || 'Select a project'}</h2>
+                    <h2>{title || 'Add a new project'}</h2>
                     <div className='desc'>
                         <div className='left'>
                             <p>Description</p>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css';
 import ProjectPopUp from './ProjectPopUp';
+import ConfirmationPopUp from './ConfirmationPopUp';
 
 function Projects({ onSelectProject }) {
     const [projects, setProjects] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [projectToDelete, setProjectToDelete] = useState(null);
     const [activeProjectId, setActiveProjectId] = useState(null);
 
     useEffect(() => {
@@ -42,6 +45,33 @@ function Projects({ onSelectProject }) {
         .catch(error => console.error('Error adding project:', error));
     };
 
+    const handleDeleteClick = (projectId) => {
+        setProjectToDelete(projectId);
+        setShowConfirmation(true);
+    };
+
+    const confirmDelete = () => {
+        fetch(`http://localhost:3001/projects/${projectToDelete}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                setProjects(projects.filter(project => project._id !== projectToDelete));
+                if (activeProjectId === projectToDelete) {
+                    setActiveProjectId(projects[0]?._id || null);
+                    onSelectProject(projects[0]?._id || null);
+                }
+            } else {
+                console.error('Error deleting project');
+            }
+        })
+        .catch(error => console.error('Error deleting project:', error))
+        .finally(() => {
+            setShowConfirmation(false);
+            setProjectToDelete(null);
+        });
+    };
+
     const handleProjectClick = (projectId) => {
         setActiveProjectId(projectId);
         onSelectProject(projectId);
@@ -57,16 +87,25 @@ function Projects({ onSelectProject }) {
             </div>
             <div className='projects-container'>
                 {projects.map((project) => (
-                    <button 
-                        key={project._id} 
-                        className={`title ${activeProjectId === project._id ? 'active' : ''}`} 
-                        onClick={() => handleProjectClick(project._id)}
-                    >
-                        <p>{project.projectName}</p>
-                    </button>
+                    <div key={project._id} className='project-item'>
+                        <button 
+                            className={`title ${activeProjectId === project._id ? 'active' : ''}`} 
+                            onClick={() => handleProjectClick(project._id)}
+                        >
+                            <p>{project.projectName}</p>
+                        </button>
+                        <button className='delete-button' onClick={() => handleDeleteClick(project._id)}>
+                            <i className='fa-solid fa-trash'></i>
+                        </button>
+                    </div>
                 ))}
             </div>
             <ProjectPopUp show={showPopup} onClose={togglePopup} onAddProject={addProject}/>
+            <ConfirmationPopUp
+                show={showConfirmation}
+                onClose={() => setShowConfirmation(false)}
+                onConfirm={confirmDelete}
+            />
         </div>
     );
 }
