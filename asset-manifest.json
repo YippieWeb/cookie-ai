@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cookie-ai/static/css/main.5d738395.css",
-    "main.js": "/cookie-ai/static/js/main.e2d4f2b3.js",
+    "main.css": "/cookie-ai/static/css/main.a5a9c05e.css",
+    "main.js": "/cookie-ai/static/js/main.dc9365e9.js",
     "static/js/453.d6c5c09a.chunk.js": "/cookie-ai/static/js/453.d6c5c09a.chunk.js",
     "static/media/logo-blue.png": "/cookie-ai/static/media/logo-blue.6a8e9b77163f78e2baa2.png",
     "index.html": "/cookie-ai/index.html",
-    "main.5d738395.css.map": "/cookie-ai/static/css/main.5d738395.css.map",
-    "main.e2d4f2b3.js.map": "/cookie-ai/static/js/main.e2d4f2b3.js.map",
+    "main.a5a9c05e.css.map": "/cookie-ai/static/css/main.a5a9c05e.css.map",
+    "main.dc9365e9.js.map": "/cookie-ai/static/js/main.dc9365e9.js.map",
     "453.d6c5c09a.chunk.js.map": "/cookie-ai/static/js/453.d6c5c09a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d738395.css",
-    "static/js/main.e2d4f2b3.js"
+    "static/css/main.a5a9c05e.css",
+    "static/js/main.dc9365e9.js"
   ]
 }
