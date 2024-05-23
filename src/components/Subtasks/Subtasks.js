@@ -19,6 +19,28 @@ function Subtasks() {
                     </div>
                 </div>
                 <div className='subtasks-container'>
+                <div className='subtask'>
+                        <div className='stripe'></div>
+                        <div className='wrapper'>
+                            <p className='title'>Learn React Native by watching this video</p>
+                            <p className='description'>https://youtu.be/0-S5a0eXPoc?si=5S7D5hBN_uRWrb1N</p>
+                            <div className='tools'>
+                                <div className='priority'>
+                                    <i className="fa-solid fa-fire"></i>
+                                    <div className='level'>
+                                        <p>3</p>
+                                    </div>
+                                    <div className='time'>
+                                        <p><span>3h</span> estimated</p>
+                                    </div>
+                                </div>
+                                <div className='edit'>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                    <i className='fa-solid fa-trash'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
@@ -53,7 +75,7 @@ function Subtasks() {
                                         <p>2</p>
                                     </div>
                                     <div className='time'>
-                                        <p><span>1hr</span> estimated</p>
+                                        <p><span>1h</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
@@ -75,7 +97,7 @@ function Subtasks() {
                                         <p>3</p>
                                     </div>
                                     <div className='time'>
-                                        <p><span>2hr</span> estimated</p>
+                                        <p><span>2h</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
