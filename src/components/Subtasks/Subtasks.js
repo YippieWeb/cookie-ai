@@ -22,8 +22,8 @@ function Subtasks() {
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Add a pop up warnign window before a project is deleted</p>
-                            <p className='description'>A pop up window with permanently delete or cancel button, similar to Loom's.</p>
+                            <p className='title'>Test out ability to add subtask to subtasks array</p>
+                            <p className='description'>Make sure that the subtask data structure is already defined.</p>
                             <div className='tools'>
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
@@ -31,7 +31,7 @@ function Subtasks() {
                                         <p>3</p>
                                     </div>
                                     <div className='time'>
-                                        <p><span>25m</span> estimated</p>
+                                        <p><span>15m</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
@@ -44,8 +44,8 @@ function Subtasks() {
                     <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Set up Instruction.js in models folder</p>
-                            <p className='description'>Source Sans, designed for Adobe, is a sans-serif typeface that aligns with Inter in terms of clarity.</p>
+                            <p className='title'>Try CRUD operations on some subtasks</p>
+                            <p className='description'>Add ability to add, edit, and delete subtask. This ability will be there in the future anyway so we can do this first.</p>
                             <div className='tools'>
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
@@ -53,7 +53,29 @@ function Subtasks() {
                                         <p>2</p>
                                     </div>
                                     <div className='time'>
-                                        <p><span>15m</span> estimated</p>
+                                        <p><span>1hr</span> estimated</p>
+                                    </div>
+                                </div>
+                                <div className='edit'>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                    <i className='fa-solid fa-trash'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='subtask'>
+                        <div className='stripe'></div>
+                        <div className='wrapper'>
+                            <p className='title'>Integrate ChatGPT API into the app and use a simple prompt</p>
+                            <p className='description'>E.g. break down this task into manageable subtasks, provide title, desc, priority, and time. Oh future feature! Let user define how "mini" do they want the tasks to be.</p>
+                            <div className='tools'>
+                                <div className='priority'>
+                                    <i className="fa-solid fa-fire"></i>
+                                    <div className='level'>
+                                        <p>3</p>
+                                    </div>
+                                    <div className='time'>
+                                        <p><span>2hr</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
