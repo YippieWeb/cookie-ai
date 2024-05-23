@@ -4,8 +4,16 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
 app.use(express.json()); // middleware to parse JSON
+
+// CORS Configuration
+const allowedOrigins = [
+    'http://localhost:3000', // React app running locally
+    'https://yippieweb.github.io' // GitHub Pages deployment
+];
+app.use(cors({
+    origin: allowedOrigins
+}));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
