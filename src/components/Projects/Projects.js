@@ -11,7 +11,9 @@ function Projects({ onSelectProject }) {
     const [activeProjectId, setActiveProjectId] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3001/projects')
+        const apiUrl = process.env.REACT_APP_API_URL;
+        console.log('API URL:', apiUrl);
+        fetch(`${apiUrl}/projects`)
             .then(response => response.json())
             .then(data => {
                 setProjects(data);
@@ -29,7 +31,9 @@ function Projects({ onSelectProject }) {
     };
 
     const addProject = (project) => {
-        fetch('http://localhost:3001/projects', {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        console.log('API URL:', apiUrl);
+        fetch(`${apiUrl}/projects`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +55,9 @@ function Projects({ onSelectProject }) {
     };
 
     const confirmDelete = () => {
-        fetch(`http://localhost:3001/projects/${projectToDelete}`, {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        console.log('API URL:', apiUrl);
+        fetch(`${apiUrl}/projects/${projectToDelete}`, {
             method: 'DELETE',
         })
         .then(response => {

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -19,23 +20,12 @@ app.use(cors({
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
-.then(() => console.log("MongoDB database connection established successfully"))
-.catch(err => console.error("MongoDB connection error:", err));
+    .then(() => console.log("MongoDB database connection established successfully"))
+    .catch(err => console.error("MongoDB connection error:", err));
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
-});
-
-// define routes
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the app!" });
-});
-
-// projects
+// API Routes
 const Project = require('./models/Project'); // ensure this path is correct based on your project structure
 
-// route to create a new project
 app.post('/projects', async (req, res) => {
     const { projectName, description } = req.body;
     const newProject = new Project({ projectName, description });
@@ -48,19 +38,15 @@ app.post('/projects', async (req, res) => {
     }
 });
 
-// route to retrieve all projects
 app.get('/projects', async (req, res) => {
     try {
-        const projects = await Project.find().sort({ createdAt: -1 }); // sort by createdAt in descending order
-        console.log("Retrieved projects:", projects); // log the retrieved projects
+        const projects = await Project.find().sort({ createdAt: -1 });
         res.status(200).json(projects);
     } catch (error) {
-        console.error("Error fetching projects:", error);
         res.status(500).json({ message: error.message });
     }
 });
 
-// route to retrieve a project by its ID
 app.get('/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -74,7 +60,6 @@ app.get('/projects/:id', async (req, res) => {
     }
 });
 
-// route to delete a project by its ID
 app.delete('/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -88,7 +73,6 @@ app.delete('/projects/:id', async (req, res) => {
     }
 });
 
-// route to update instructionText for a specific project
 app.put('/projects/:projectId', async (req, res) => {
     const { projectId } = req.params;
     const { instructionText } = req.body;
@@ -100,8 +84,18 @@ app.put('/projects/:projectId', async (req, res) => {
     }
 });
 
-// start server
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Catch-all route to serve index.html for client-side routing
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+});
+
+// Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;
