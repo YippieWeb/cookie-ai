@@ -2,16 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config({ path: './backend/.env' }); // Ensure the .env file is loaded from the backend directory
 
 const app = express();
-app.use(express.json()); // middleware to parse JSON
+app.use(express.json());
 
 // CORS Configuration
 const allowedOrigins = [
     'http://localhost:3000', // React app running locally
-    'https://yippieweb.github.io', // GitHub Pages deployment
-    'https://cookie-ai-three.vercel.app' // Vercel deployment
+    'https://cookie-ai-three.vercel.app' // Vercel frontend deployment URL
 ];
 
 app.use(cors({
@@ -24,9 +23,9 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch(err => console.error("MongoDB connection error:", err));
 
 // API Routes
-const Project = require('./models/Project'); // ensure this path is correct based on your project structure
+const Project = require('./models/Project');
 
-app.post('/projects', async (req, res) => {
+app.post('/api/projects', async (req, res) => {
     const { projectName, description } = req.body;
     const newProject = new Project({ projectName, description });
 
@@ -38,7 +37,7 @@ app.post('/projects', async (req, res) => {
     }
 });
 
-app.get('/projects', async (req, res) => {
+app.get('/api/projects', async (req, res) => {
     try {
         const projects = await Project.find().sort({ createdAt: -1 });
         res.status(200).json(projects);
@@ -47,7 +46,7 @@ app.get('/projects', async (req, res) => {
     }
 });
 
-app.get('/projects/:id', async (req, res) => {
+app.get('/api/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const project = await Project.findById(id);
@@ -60,7 +59,7 @@ app.get('/projects/:id', async (req, res) => {
     }
 });
 
-app.delete('/projects/:id', async (req, res) => {
+app.delete('/api/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const project = await Project.findByIdAndDelete(id);
@@ -73,7 +72,7 @@ app.delete('/projects/:id', async (req, res) => {
     }
 });
 
-app.put('/projects/:projectId', async (req, res) => {
+app.put('/api/projects/:projectId', async (req, res) => {
     const { projectId } = req.params;
     const { instructionText } = req.body;
     try {
