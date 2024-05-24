@@ -1,16 +1,16 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'; // for github pages
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import Dashboard from "./pages/Dashboard"
 
 function App() {
-  return (
-    <HashRouter>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-    </HashRouter>
-  );
+    return (
+        <Router basename="/cookie-ai">
+            <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
