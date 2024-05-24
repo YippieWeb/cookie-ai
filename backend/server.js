@@ -1,31 +1,40 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
-require('dotenv').config({ path: './backend/.env' }); // Ensure the .env file is loaded from the backend directory
+require('dotenv').config();
 
 const app = express();
-app.use(express.json());
+app.use(express.json()); // middleware to parse JSON
 
 // CORS Configuration
 const allowedOrigins = [
     'http://localhost:3000', // React app running locally
-    'https://cookie-ai-three.vercel.app' // Vercel frontend deployment URL
+    'https://yippieweb.github.io' // GitHub Pages deployment
 ];
-
 app.use(cors({
     origin: allowedOrigins
 }));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log("MongoDB database connection established successfully"))
-    .catch(err => console.error("MongoDB connection error:", err));
+.then(() => console.log("MongoDB database connection established successfully"))
+.catch(err => console.error("MongoDB connection error:", err));
 
-// API Routes
-const Project = require('./models/Project');
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log("MongoDB database connection established successfully");
+});
 
-app.post('/api/projects', async (req, res) => {
+// define routes
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to the app!" });
+});
+
+// projects
+const Project = require('./models/Project'); // ensure this path is correct based on your project structure
+
+// route to create a new project
+app.post('/projects', async (req, res) => {
     const { projectName, description } = req.body;
     const newProject = new Project({ projectName, description });
 
@@ -37,16 +46,20 @@ app.post('/api/projects', async (req, res) => {
     }
 });
 
-app.get('/api/projects', async (req, res) => {
+// route to retrieve all projects
+app.get('/projects', async (req, res) => {
     try {
-        const projects = await Project.find().sort({ createdAt: -1 });
+        const projects = await Project.find().sort({ createdAt: -1 }); // sort by createdAt in descending order
+        console.log("Retrieved projects:", projects); // log the retrieved projects
         res.status(200).json(projects);
     } catch (error) {
+        console.error("Error fetching projects:", error);
         res.status(500).json({ message: error.message });
     }
 });
 
-app.get('/api/projects/:id', async (req, res) => {
+// route to retrieve a project by its ID
+app.get('/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const project = await Project.findById(id);
@@ -59,7 +72,8 @@ app.get('/api/projects/:id', async (req, res) => {
     }
 });
 
-app.delete('/api/projects/:id', async (req, res) => {
+// route to delete a project by its ID
+app.delete('/projects/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const project = await Project.findByIdAndDelete(id);
@@ -72,7 +86,8 @@ app.delete('/api/projects/:id', async (req, res) => {
     }
 });
 
-app.put('/api/projects/:projectId', async (req, res) => {
+// route to update instructionText for a specific project
+app.put('/projects/:projectId', async (req, res) => {
     const { projectId } = req.params;
     const { instructionText } = req.body;
     try {
@@ -83,18 +98,8 @@ app.put('/api/projects/:projectId', async (req, res) => {
     }
 });
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../build')));
-
-// Catch-all route to serve index.html for client-side routing
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
-});
-
-// Start server
+// start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = app;

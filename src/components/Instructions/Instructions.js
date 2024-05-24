@@ -9,10 +9,8 @@ function Instructions({ projectId }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const apiUrl = process.env.REACT_APP_API_URL;
-        console.log('API URL:', apiUrl);
         if (projectId) {
-            fetch(`${apiUrl}/projects/${projectId}`)
+            fetch(`http://localhost:3001/projects/${projectId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error fetching project: ${response.statusText}`);
@@ -36,11 +34,9 @@ function Instructions({ projectId }) {
     }, [projectId]);
 
     useEffect(() => {
-        const apiUrl = process.env.REACT_APP_API_URL;
-        console.log('API URL:', apiUrl);
         const saveInterval = setInterval(() => {
             if (instructionText && projectId) {
-                fetch(`${apiUrl}/projects/${projectId}`, {
+                fetch(`http://localhost:3001/projects/${projectId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
