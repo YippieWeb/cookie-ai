@@ -9,8 +9,10 @@ app.use(express.json()); // middleware to parse JSON
 // CORS Configuration
 const allowedOrigins = [
     'http://localhost:3000', // React app running locally
-    'https://yippieweb.github.io' // GitHub Pages deployment
+    'https://yippieweb.github.io', // GitHub Pages deployment
+    'https://cookie-ai-three.vercel.app' // Vercel deployment
 ];
+
 app.use(cors({
     origin: allowedOrigins
 }));
