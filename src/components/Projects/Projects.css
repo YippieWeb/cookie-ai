@@ -28,6 +28,10 @@
   color: #172B4D;
 }
 
+.projects .projects-container .project-item {
+  height: 50px;
+}
+
 .projects .projects-container .title {
   width: 260px;
   height: 50px;
@@ -50,7 +54,7 @@
 }
 
 .projects .projects-container .title:hover {
-  background-color: #DEEBFF;
+  background-color: #deebff40;
 }
 
 .projects .projects-container .title.active {
