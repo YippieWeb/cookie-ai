@@ -22,8 +22,8 @@ function Subtasks() {
                 <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
-                            <p className='title'>Learn React Native by watching this video</p>
-                            <p className='description'>https://youtu.be/0-S5a0eXPoc?si=5S7D5hBN_uRWrb1N</p>
+                            <p className='title'>Sample subtask</p>
+                            <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <div className='tools'>
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
@@ -31,7 +31,7 @@ function Subtasks() {
                                         <p>3</p>
                                     </div>
                                     <div className='time'>
-                                        <p><span>3h</span> estimated</p>
+                                        <p><span>1h</span> estimated</p>
                                     </div>
                                 </div>
                                 <div className='edit'>
@@ -41,7 +41,7 @@ function Subtasks() {
                             </div>
                         </div>
                     </div>
-                    <div className='subtask'>
+                    {/* <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
                             <p className='title'>Test out ability to add subtask to subtasks array</p>
@@ -106,7 +106,7 @@ function Subtasks() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

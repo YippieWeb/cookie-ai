@@ -1,12 +1,13 @@
 {
-  "homepage": "https://yippieweb.github.io/cookie-ai/#",
   "name": "cookie-ai",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://cookie-ai-ioy6.onrender.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.4.5",
     "mongodb": "^6.6.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

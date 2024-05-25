@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(express.json()); // middleware to parse JSON
@@ -9,7 +10,8 @@ app.use(express.json()); // middleware to parse JSON
 // CORS Configuration
 const allowedOrigins = [
     'http://localhost:3000', // React app running locally
-    'https://yippieweb.github.io' // GitHub Pages deployment
+    'https://yippieweb.github.io', // GitHub Pages deployment
+    'https://cookie-ai-ioy6.onrender.com'
 ];
 app.use(cors({
     origin: allowedOrigins
@@ -26,9 +28,9 @@ connection.once('open', () => {
 });
 
 // define routes
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the app!" });
-});
+// app.get("/", (req, res) => {
+//     res.json({ message: "Welcome to the app!" });
+// });
 
 // projects
 const Project = require('./models/Project'); // ensure this path is correct based on your project structure
@@ -97,6 +99,14 @@ app.put('/projects/:projectId', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+app.use(express.static(path.join(__dirname, "../build")));
+
+app.get('*', async (req, res) => {
+    res.sendFile(path.join(__dirname, "../build/index.html"));
+});
+
+console.log(path.join(__dirname, "../build/index.html"));
 
 // start server
 const PORT = process.env.PORT || 3001;

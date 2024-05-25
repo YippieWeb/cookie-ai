@@ -11,7 +11,7 @@ function Projects({ onSelectProject }) {
     const [activeProjectId, setActiveProjectId] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3001/projects')
+        fetch('/projects')
             .then(response => response.json())
             .then(data => {
                 setProjects(data);
@@ -29,7 +29,7 @@ function Projects({ onSelectProject }) {
     };
 
     const addProject = (project) => {
-        fetch('http://localhost:3001/projects', {
+        fetch('/projects', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function Projects({ onSelectProject }) {
     };
 
     const confirmDelete = () => {
-        fetch(`http://localhost:3001/projects/${projectToDelete}`, {
+        fetch(`/projects/${projectToDelete}`, {
             method: 'DELETE',
         })
         .then(response => {

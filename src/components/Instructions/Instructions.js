@@ -10,7 +10,7 @@ function Instructions({ projectId }) {
 
     useEffect(() => {
         if (projectId) {
-            fetch(`http://localhost:3001/projects/${projectId}`)
+            fetch(`/projects/${projectId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error fetching project: ${response.statusText}`);
@@ -36,7 +36,7 @@ function Instructions({ projectId }) {
     useEffect(() => {
         const saveInterval = setInterval(() => {
             if (instructionText && projectId) {
-                fetch(`http://localhost:3001/projects/${projectId}`, {
+                fetch(`/projects/${projectId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
