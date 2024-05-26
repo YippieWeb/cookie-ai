@@ -11,37 +11,18 @@ function Subtasks() {
                         <p>AI-generated sub-tasks</p>
                     </div>
                     <div className='export'>
-                        <p>Export to</p>
+                        <button className='export-button'>
+                            <p>Export</p>
+                        </button>
+                        {/* <p>Export to</p>
                         <select id="export-options" name="export-options">
                             <option value="calendar">Calendar</option>
                             <option value="todo">To-do List</option>
-                        </select>
+                        </select> */}
                     </div>
                 </div>
                 <div className='subtasks-container'>
-                <div className='subtask'>
-                        <div className='stripe'></div>
-                        <div className='wrapper'>
-                            <p className='title'>Sample subtask</p>
-                            <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div className='tools'>
-                                <div className='priority'>
-                                    <i className="fa-solid fa-fire"></i>
-                                    <div className='level'>
-                                        <p>3</p>
-                                    </div>
-                                    <div className='time'>
-                                        <p><span>1h</span> estimated</p>
-                                    </div>
-                                </div>
-                                <div className='edit'>
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                    <i className='fa-solid fa-trash'></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <div className='subtask'>
+                    <div className='subtask'>
                         <div className='stripe'></div>
                         <div className='wrapper'>
                             <p className='title'>Test out ability to add subtask to subtasks array</p>
@@ -106,7 +87,7 @@ function Subtasks() {
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

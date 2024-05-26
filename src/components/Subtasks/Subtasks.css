@@ -33,6 +33,7 @@
   display: flex;
 }
 
+/* for selector (calendar/to-do) */
 .subtasks .header .export #export-options {
   border: none;
   border-radius: 3px;
@@ -43,6 +44,27 @@
   color: #505F79;
   padding: 2px 0px 2px 5px;
   margin: 0 5px;
+}
+
+.subtasks .header .export .export-button {
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 10px 15px;
+  background-color: #0b66e4;
+  color: #fff;
+  transition: .5s ease;
+}
+
+.subtasks .header .export .export-button p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 0;
+}
+
+.subtasks .header .export .export-button:hover {
+  background-color: #0052CC;
 }
 
 .subtasks .subtask {
