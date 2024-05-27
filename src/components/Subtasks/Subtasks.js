@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Subtasks.css';
 import AddSubtaskPopUp from './AddSubtaskPopUp';
 
@@ -29,11 +29,12 @@ function Subtasks() {
                             <p className='description'>Make sure that the subtask data structure is already defined.</p>
                             <div className='tools'>
                                 <div className='priority'>
-                                    <i className="fa-solid fa-fire"></i>
-                                    <div className='level'>
+                                    {/* <i className="fa-solid fa-fire"></i> */}
+                                    <div className='level high'>
                                         <p>High</p>
                                     </div>
                                     <div className='time'>
+                                        <i className="fa-regular fa-clock"></i>
                                         <p><span>15m</span> estimated</p>
                                     </div>
                                 </div>
@@ -51,11 +52,12 @@ function Subtasks() {
                             <p className='description'>Add ability to add, edit, and delete subtask. This ability will be there in the future anyway so we can do this first.</p>
                             <div className='tools'>
                                 <div className='priority'>
-                                    <i className="fa-solid fa-fire"></i>
-                                    <div className='level'>
+                                    {/* <i className="fa-solid fa-fire"></i> */}
+                                    <div className='level high'>
                                         <p>High</p>
                                     </div>
                                     <div className='time'>
+                                        <i className="fa-regular fa-clock"></i>
                                         <p><span>1h</span> estimated</p>
                                     </div>
                                 </div>
@@ -73,11 +75,12 @@ function Subtasks() {
                             <p className='description'>E.g. break down this task into manageable subtasks, provide title, desc, priority, and time. Oh future feature! Let user define how "mini" do they want the tasks to be.</p>
                             <div className='tools'>
                                 <div className='priority'>
-                                    <i className="fa-solid fa-fire"></i>
-                                    <div className='level'>
+                                    {/* <i className="fa-solid fa-fire"></i> */}
+                                    <div className='level medium'>
                                         <p>Medium</p>
                                     </div>
                                     <div className='time'>
+                                        <i className="fa-regular fa-clock"></i>
                                         <p><span>2h</span> estimated</p>
                                     </div>
                                 </div>

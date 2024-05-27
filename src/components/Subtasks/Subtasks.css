@@ -115,26 +115,35 @@
   display: flex;
 }
 
+/* different styling based on level */
 .subtasks .subtask .tools .level p {
   font-size: 12px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
-  background-color: #edeef0;
-  color: #6B778C;
   border-radius: 3px;
   padding: 3px 10px;
-  margin: 0 5px;
+  margin-right: 20px;
+}
+
+/* high level */
+.subtasks .subtask .tools .level.high p {
+  background-color: #f7e4e0;
+  color: #FF5630;
+}
+
+.subtasks .subtask .tools .level.medium p {
+  background-color: #f9e7d1;
+  color: #FF8B00;
+}
+
+.subtasks .subtask .tools .time {
+  display: flex;
 }
 
 .subtasks .subtask .tools .time p {
   color: #6B778C;
   font-size: 12px;
   padding: 3px 0 0 10px;
-}
-
-.subtasks .subtask .tools .priority i {
-  color: #FF7452;
-  padding-right: 8px;
 }
 
 .subtasks .subtask .tools .edit i {
