@@ -1,25 +1,25 @@
-import React from 'react';
-import './Subtasks.css'
+import React, { useState, useEffect } from 'react';
+import './Subtasks.css';
+import AddSubtaskPopUp from './AddSubtaskPopUp';
 
 function Subtasks() {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     return (
         <div className='subtasks'>
             <div className='wrapper'>
                 <div className='header'>
                     <div className='title'>
                         <i className="fa-solid fa-wand-magic-sparkles"></i>
-                        <p>AI-generated sub-tasks</p>
+                        <p>AI-generated subtasks</p>
                     </div>
-                    <div className='export'>
-                        <button className='export-button'>
-                            <p>Export</p>
-                        </button>
-                        {/* <p>Export to</p>
-                        <select id="export-options" name="export-options">
-                            <option value="calendar">Calendar</option>
-                            <option value="todo">To-do List</option>
-                        </select> */}
-                    </div>
+                    <button className='add-task-button' onClick={togglePopup}>
+                        <i className="fa-solid fa-circle-plus"></i>
+                    </button>
                 </div>
                 <div className='subtasks-container'>
                     <div className='subtask'>
@@ -31,7 +31,7 @@ function Subtasks() {
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
                                     <div className='level'>
-                                        <p>3</p>
+                                        <p>High</p>
                                     </div>
                                     <div className='time'>
                                         <p><span>15m</span> estimated</p>
@@ -53,7 +53,7 @@ function Subtasks() {
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
                                     <div className='level'>
-                                        <p>2</p>
+                                        <p>High</p>
                                     </div>
                                     <div className='time'>
                                         <p><span>1h</span> estimated</p>
@@ -75,7 +75,7 @@ function Subtasks() {
                                 <div className='priority'>
                                     <i className="fa-solid fa-fire"></i>
                                     <div className='level'>
-                                        <p>3</p>
+                                        <p>Medium</p>
                                     </div>
                                     <div className='time'>
                                         <p><span>2h</span> estimated</p>
@@ -89,7 +89,18 @@ function Subtasks() {
                         </div>
                     </div>
                 </div>
+                <div className='export'>
+                    <button className='export-button'>
+                        <p>Export</p>
+                    </button>
+                    {/* <p>Export to</p>
+                    <select id="export-options" name="export-options">
+                        <option value="calendar">Calendar</option>
+                        <option value="todo">To-do List</option>
+                    </select> */}
+                </div>
             </div>
+            <AddSubtaskPopUp show={showPopup} onClose={togglePopup} />
         </div>
     );
 }

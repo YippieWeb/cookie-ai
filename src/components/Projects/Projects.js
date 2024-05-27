@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css';
-import ProjectPopUp from './ProjectPopUp';
-import ConfirmationPopUp from './ConfirmationPopUp';
+import AddProjectPopUp from './AddProjectPopUp';
+import DeleteProjectPopUp from './DeleteProjectPopUp';
 
 function Projects({ onSelectProject }) {
     const [projects, setProjects] = useState([]);
@@ -82,7 +82,7 @@ function Projects({ onSelectProject }) {
             <div className='header'>
                 <h2>Projects</h2>
                 <button className='add-project' onClick={togglePopup}>
-                    <i className='fa-solid fa-plus'></i>
+                    <i className="fa-solid fa-circle-plus"></i>
                 </button>
             </div>
             <div className='projects-container'>
@@ -100,8 +100,8 @@ function Projects({ onSelectProject }) {
                     </div>
                 ))}
             </div>
-            <ProjectPopUp show={showPopup} onClose={togglePopup} onAddProject={addProject}/>
-            <ConfirmationPopUp
+            <AddProjectPopUp show={showPopup} onClose={togglePopup} onAddProject={addProject}/>
+            <DeleteProjectPopUp
                 show={showConfirmation}
                 onClose={() => setShowConfirmation(false)}
                 onConfirm={confirmDelete}
@@ -110,4 +110,4 @@ function Projects({ onSelectProject }) {
     );
 }
 
-export default Projects;
+export default Projects; 

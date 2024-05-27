@@ -20,9 +20,13 @@
   color: #172B4D;
 }
 
+.instructions .header {
+  padding-bottom: 20px;
+}
+
 .instructions .header .desc {
   display: flex;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .instructions .header .desc .left p {
@@ -47,7 +51,6 @@
 .instructions .header p {
   font-size: 14px;
   color: #172B4D;
-  padding-bottom: 20px;
 }
 
 .instructions textarea {
@@ -71,7 +74,7 @@
   border-radius: 5px;
   background-color: #0b66e4;
   transform: translateX(445px) translateY(-85px);
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .instructions .send-button:hover {
@@ -100,7 +103,7 @@
   padding: 10px 15px;
   background-color: #0b66e4;
   color: #fff;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .instructions .upload .upload-button:hover {

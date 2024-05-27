@@ -34,7 +34,7 @@
 }
 
 /* for selector (calendar/to-do) */
-.subtasks .header .export #export-options {
+/* .subtasks .export #export-options {
   border: none;
   border-radius: 3px;
   font-family: 'Inter', sans-serif;
@@ -44,26 +44,25 @@
   color: #505F79;
   padding: 2px 0px 2px 5px;
   margin: 0 5px;
-}
+} */
 
-.subtasks .header .export .export-button {
+.subtasks .export .export-button {
   display: flex;
   border: none;
   border-radius: 5px;
-  margin-left: 20px;
   padding: 10px 15px;
   background-color: #0b66e4;
   color: #fff;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
-.subtasks .header .export .export-button p {
+.subtasks .export .export-button p {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   padding: 0;
 }
 
-.subtasks .header .export .export-button:hover {
+.subtasks .export .export-button:hover {
   background-color: #0052CC;
 }
 
@@ -83,7 +82,7 @@
   top: 0;
   bottom: 0;
   width: 10px; 
-  background-color: #79E2F2;
+  background-color: #B3D4FF;
   border-top-left-radius: 8px; 
   border-bottom-left-radius: 8px; 
 }
@@ -116,18 +115,15 @@
   display: flex;
 }
 
-.subtasks .subtask .tools .level {
-  background-color: #DFE1E6;
-  border-radius: 10px;
-  height: fit-content;
-  margin-top: 4px;
-}
-
 .subtasks .subtask .tools .level p {
-  padding: 1px 8px;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  background-color: #edeef0;
   color: #6B778C;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin: 0 5px;
 }
 
 .subtasks .subtask .tools .time p {
@@ -146,3 +142,19 @@
   padding-left: 10px;
   font-size: 15px;
 }
+
+.subtasks .add-task-button {
+  background-color: transparent;
+  border: none;
+}
+
+.subtasks .add-task-button i {
+  font-size: 30px;
+  color: #0b66e4;
+  transition: .3s ease;
+}
+
+.subtasks .add-task-button i:hover {
+  color: #0052CC;
+}
+

@@ -44,10 +44,9 @@ function Instructions({ projectId }) {
                     body: JSON.stringify({ instructionText }),
                 })
                 .then(response => response.json())
-                .then(data => console.log('Instruction text saved:', data))
                 .catch(error => console.error('Error saving instruction text:', error));
             }
-        }, 500); // save text every 5 seconds
+        }, 500); // save text every 0.5 seconds
 
         return () => clearInterval(saveInterval); // clear interval on component unmount
     }, [instructionText, projectId]);

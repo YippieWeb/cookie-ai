@@ -11,21 +11,18 @@
 }
 
 .projects .header .add-project {
-  width: 35px;
-  height: 35px;
+  background-color: transparent;
   border: none;
-  border-radius: 30px;
-  background-color: #F4F5F7;
-  transition: .5s ease;
 }
 
-.projects .header .add-project:hover {
-  background-color: #DEEBFF;
+.projects .header .add-project i {
+  font-size: 30px;
+  color: #0b66e4;
+  transition: .3s ease;
 }
 
-.projects .header i {
-  font-size: 16px;
-  color: #172B4D;
+.projects .header .add-project:hover i {
+  color: #0052CC;
 }
 
 .projects .projects-container .project-item {
@@ -38,7 +35,7 @@
   border: none;
   border-radius: 10px;
   background-color: #fff;
-  transition: 0.5s ease;
+  transition: .3s ease;
   position: relative;
   display: flex;
 }
@@ -69,7 +66,7 @@
 
 .projects .projects-container .delete-button i {
   color: #6B778C;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .projects .projects-container .delete-button i:hover {
