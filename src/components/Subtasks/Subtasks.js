@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Subtasks.css';
 import AddSubtaskPopUp from './AddSubtaskPopUp';
 
-function Subtasks() {
+function Subtasks({ projectId }) {
+    const [subtasks, setSubtasks] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        console.log(projectId);
+        if (projectId) {
+            fetch(`/projects/${projectId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch project: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Full subtask object:", data);
+                    setSubtasks(data.subtasks || []);  // set subtasks, defaulting to empty if none
+                    setError(null);  // clear any previous errors
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    setError(error.message);  // set error message
+                    setSubtasks([]);  // reset subtasks on error
+                    console.log(error);
+                });
+        }
+    }, [projectId]);
 
     const togglePopup = () => {
-        setShowPopup(!showPopup);
+        setShowPopup(!showPopup); 
     };
 
     return (
@@ -22,85 +48,35 @@ function Subtasks() {
                     </button>
                 </div>
                 <div className='subtasks-container'>
-                    <div className='subtask'>
-                        <div className='stripe'></div>
-                        <div className='wrapper'>
-                            <p className='title'>Test out ability to add subtask to subtasks array</p>
-                            <p className='description'>Make sure that the subtask data structure is already defined.</p>
-                            <div className='tools'>
-                                <div className='priority'>
-                                    {/* <i className="fa-solid fa-fire"></i> */}
-                                    <div className='level high'>
-                                        <p>High</p>
+                    {subtasks.map((subtask, index) => (
+                        <div key={index} className='subtask'>
+                            <div className='stripe'></div>
+                            <div className='wrapper'>
+                                <p className='title'>{subtask.name}</p>
+                                <p className='description'>{subtask.description}</p>
+                                <div className='tools'>
+                                    <div className='priority'>
+                                        <div className={`level ${subtask.priority}`}>
+                                            <p>{subtask.priority}</p>
+                                        </div>
+                                        <div className='time'>
+                                            <i className="fa-regular fa-clock"></i>
+                                            <p><span>{subtask.time}m</span> estimated</p>
+                                        </div>
                                     </div>
-                                    <div className='time'>
-                                        <i className="fa-regular fa-clock"></i>
-                                        <p><span>15m</span> estimated</p>
+                                    <div className='edit'>
+                                        <i className="fa-regular fa-pen-to-square"></i>
+                                        <i className='fa-solid fa-trash'></i>
                                     </div>
-                                </div>
-                                <div className='edit'>
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                    <i className='fa-solid fa-trash'></i>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='subtask'>
-                        <div className='stripe'></div>
-                        <div className='wrapper'>
-                            <p className='title'>Try CRUD operations on some subtasks</p>
-                            <p className='description'>Add ability to add, edit, and delete subtask. This ability will be there in the future anyway so we can do this first.</p>
-                            <div className='tools'>
-                                <div className='priority'>
-                                    {/* <i className="fa-solid fa-fire"></i> */}
-                                    <div className='level high'>
-                                        <p>High</p>
-                                    </div>
-                                    <div className='time'>
-                                        <i className="fa-regular fa-clock"></i>
-                                        <p><span>1h</span> estimated</p>
-                                    </div>
-                                </div>
-                                <div className='edit'>
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                    <i className='fa-solid fa-trash'></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='subtask'>
-                        <div className='stripe'></div>
-                        <div className='wrapper'>
-                            <p className='title'>Integrate ChatGPT API into the app and use a simple prompt</p>
-                            <p className='description'>E.g. break down this task into manageable subtasks, provide title, desc, priority, and time. Oh future feature! Let user define how "mini" do they want the tasks to be.</p>
-                            <div className='tools'>
-                                <div className='priority'>
-                                    {/* <i className="fa-solid fa-fire"></i> */}
-                                    <div className='level medium'>
-                                        <p>Medium</p>
-                                    </div>
-                                    <div className='time'>
-                                        <i className="fa-regular fa-clock"></i>
-                                        <p><span>2h</span> estimated</p>
-                                    </div>
-                                </div>
-                                <div className='edit'>
-                                    <i className="fa-regular fa-pen-to-square"></i>
-                                    <i className='fa-solid fa-trash'></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
                 <div className='export'>
                     <button className='export-button'>
                         <p>Export</p>
                     </button>
-                    {/* <p>Export to</p>
-                    <select id="export-options" name="export-options">
-                        <option value="calendar">Calendar</option>
-                        <option value="todo">To-do List</option>
-                    </select> */}
                 </div>
             </div>
             <AddSubtaskPopUp show={showPopup} onClose={togglePopup} />

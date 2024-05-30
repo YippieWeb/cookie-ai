@@ -27,14 +27,9 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 
-// define routes
-// app.get("/", (req, res) => {
-//     res.json({ message: "Welcome to the app!" });
-// });
-
 // projects
-const Project = require('./models/Project'); // ensure this path is correct based on your project structure
-
+const Project = require('./models/Project');
+ 
 // route to create a new project
 app.post('/projects', async (req, res) => {
     const { projectName, description } = req.body;
@@ -100,6 +95,28 @@ app.put('/projects/:projectId', async (req, res) => {
     }
 });
 
+// route to GET subtasks for a project
+app.get('/projects/:projectId/subtasks', async (req, res) => {
+    try {
+        const { projectId } = req.params;
+
+        // Find the project by its ID
+        const project = await Project.findById(projectId);
+        if (!project) {
+            return res.status(404).send('Project not found');
+        }
+
+        // Log the project object to see if subtasks are included
+        console.log(project);
+
+        // Return the entire project object
+        res.json(project.subtasks);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+// prepare for deployment to "render"
 app.use(express.static(path.join(__dirname, "../build")));
 
 app.get('*', async (req, res) => {

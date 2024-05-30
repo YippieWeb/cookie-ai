@@ -19,7 +19,7 @@ function Dashboard() {
                     <Instructions projectId={selectedProjectId} />
                 </div>
                 <div className='subtask-column'>
-                    <Subtasks />
+                    <Subtasks projectId={selectedProjectId}/>
                 </div>
             </div>
         </div>

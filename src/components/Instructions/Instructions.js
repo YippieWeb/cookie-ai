@@ -33,23 +33,17 @@ function Instructions({ projectId }) {
         }
     }, [projectId]);
 
-    useEffect(() => {
-        const saveInterval = setInterval(() => {
-            if (instructionText && projectId) {
-                fetch(`/projects/${projectId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ instructionText }),
-                })
-                .then(response => response.json())
-                .catch(error => console.error('Error saving instruction text:', error));
-            }
-        }, 500); // save text every 0.5 seconds
-
-        return () => clearInterval(saveInterval); // clear interval on component unmount
-    }, [instructionText, projectId]);
+    async function updateInstructionText () {
+        fetch(`/projects/${projectId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ instructionText }),
+        })
+        .then(response => response.json())
+        .catch(error => console.error('Error saving instruction text:', error));
+    }
 
     return (
         <div className='instructions'>
@@ -76,6 +70,7 @@ function Instructions({ projectId }) {
                     className='instruction'
                     value={instructionText}
                     onChange={(e) => setInstructionText(e.target.value)}
+                    onBlur={updateInstructionText}
                     disabled={!!error}
                 ></textarea>
                 {error && <p className='error'>{error}</p>}
