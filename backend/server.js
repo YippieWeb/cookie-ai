@@ -116,6 +116,33 @@ app.get('/projects/:projectId/subtasks', async (req, res) => {
     }
 });
 
+// route to delete a specific subtask by its MongoDB ObjectId (_id)
+app.delete('/projects/:projectId/subtasks/:subtaskId', async (req, res) => {
+    const { projectId, subtaskId } = req.params;
+    try {
+        const project = await Project.findById(projectId);
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+
+        // check if the subtask exists
+        const subtask = project.subtasks.id(subtaskId);
+        if (!subtask) {
+            return res.status(404).json({ message: 'Subtask not found' });
+        }
+
+        // remove the subtask from the project's subtasks array
+        project.subtasks.pull(subtaskId);
+
+        // save the project to apply the changes
+        await project.save();
+
+        res.status(200).json({ message: 'Subtask deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 // prepare for deployment to "render"
 app.use(express.static(path.join(__dirname, "../build")));
 

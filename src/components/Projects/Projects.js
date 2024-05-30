@@ -95,7 +95,7 @@ function Projects({ onSelectProject }) {
                             <p>{project.projectName}</p>
                         </button>
                         <button className='delete-button' onClick={() => handleDeleteClick(project._id)}>
-                            <i className='fa-solid fa-trash'></i>
+                            <i className="fa-regular fa-trash-can"></i>
                         </button>
                     </div>
                 ))}

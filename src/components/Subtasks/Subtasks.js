@@ -31,14 +31,17 @@ function Subtasks({ projectId }) {
         }
     }, [projectId]);
 
+    // pop up window for adding a subtask
     const togglePopup = () => {
         setShowPopup(!showPopup); 
     };
 
+    // capitalize the first letter
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
+    // convert the time from minutes to [] hours [] minutes
     const formatTime = (minutes) => {
         const hours = Math.floor(minutes / 60);
         const remainingMinutes = minutes % 60;
@@ -46,7 +49,26 @@ function Subtasks({ projectId }) {
             return `${hours}h ${remainingMinutes > 0 ? `${remainingMinutes}m` : ''}`;
         }
         return `${minutes}m`;
-    };    
+    };   
+    
+    const handleDelete = (projectId, subtaskId) => {
+        console.log(projectId);
+        console.log(subtaskId);
+        fetch(`/projects/${projectId}/subtasks/${subtaskId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to delete subtask: ${response.statusText}`);
+            }
+            // remove the deleted subtask from the state
+            setSubtasks(prevSubtasks => prevSubtasks.filter(subtask => subtask._id !== subtaskId));
+        })
+        .catch(error => {
+            console.error('Delete error:', error);
+            setError(error.message);  // set error message
+        });
+    };
 
     return (
         <div className='subtasks'>
@@ -61,8 +83,8 @@ function Subtasks({ projectId }) {
                     </button>
                 </div>
                 <div className='subtasks-container'>
-                    {subtasks.map((subtask, index) => (
-                        <div key={index} className='subtask'>
+                    {subtasks.map((subtask) => (
+                        <div key={subtask._id} className='subtask'>
                             <div className='stripe'></div>
                             <div className='wrapper'>
                                 <p className='title'>{subtask.name}</p>
@@ -79,7 +101,7 @@ function Subtasks({ projectId }) {
                                     </div>
                                     <div className='edit'>
                                         <i className="fa-regular fa-pen-to-square"></i>
-                                        <i className='fa-solid fa-trash'></i>
+                                        <i className="fa-regular fa-trash-can" onClick={() => handleDelete(projectId, subtask._id)}></i>
                                     </div>
                                 </div>
                             </div>

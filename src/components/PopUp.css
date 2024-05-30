@@ -168,7 +168,7 @@
 
 .add-subtask .popup-content .priority i {
   font-size: 18px;
-  padding-right: 8px;
+  padding: 5px 8px 0 0;
 }
 
 .add-subtask .popup-content .priority i.fa-fire {

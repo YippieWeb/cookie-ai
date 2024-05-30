@@ -4,8 +4,8 @@ const subtaskSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     priority: { type: String, enum: ['critical', 'high', 'medium', 'low'], required: true },
-    timeEstimated: { type: Number, required: true }
-});
+    timeEstimated: { type: Number, required: true },
+}, { _id: true });
 
 const projectSchema = new mongoose.Schema({
     projectName: { type: String, required: true },
