@@ -163,6 +163,11 @@
   color: #8993A4;
   padding-left: 10px;
   font-size: 15px;
+  transition: .3s ease;
+}
+
+.subtasks .subtask .tools .edit i.fa-trash-can:hover {
+  color: #FF7452;
 }
 
 .subtasks .add-task-button {
@@ -180,3 +185,7 @@
   color: #0052CC;
 }
 
+.projects .projects-container .delete-button i {
+  color: #6B778C;
+  transition: .3s ease;
+}

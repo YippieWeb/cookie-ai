@@ -25,4 +25,4 @@ const DeleteProjectPopUp = ({ show, onClose, onConfirm }) => {
   );
 };
 
-export default DeleteProjectPopUp;
+export default DeleteProjectPopUp; 

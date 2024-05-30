@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Subtasks.css';
 import AddSubtaskPopUp from './AddSubtaskPopUp';
+import DeleteSubtaskPopUp from './DeleteSubtaskPopUp';
 
 function Subtasks({ projectId }) {
     const [subtasks, setSubtasks] = useState([]);
-    const [showPopup, setShowPopup] = useState(false);
+    const [showAddPopup, setShowAddPopup] = useState(false);
+    const [showDeletePopup, setShowDeletePopup] = useState(false);
+    const [subtaskToDelete, setSubtaskToDelete] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log(projectId);
         if (projectId) {
             fetch(`/projects/${projectId}`)
                 .then(response => {
@@ -18,22 +20,25 @@ function Subtasks({ projectId }) {
                     return response.json();
                 })
                 .then(data => {
-                    console.log("Full subtask object:", data);
                     setSubtasks(data.subtasks || []);  // set subtasks, defaulting to empty if none
                     setError(null);  // clear any previous errors
                 })
                 .catch(error => {
-                    console.error('Fetch error:', error);
                     setError(error.message);  // set error message
                     setSubtasks([]);  // reset subtasks on error
-                    console.log(error);
                 });
         }
     }, [projectId]);
 
-    // pop up window for adding a subtask
-    const togglePopup = () => {
-        setShowPopup(!showPopup); 
+    // toggle add subtask popup
+    const toggleAddPopup = () => {
+        setShowAddPopup(!showAddPopup); 
+    };
+
+    // toggle delete subtask popup
+    const toggleDeletePopup = (subtask) => {
+        setShowDeletePopup(!showDeletePopup);
+        setSubtaskToDelete(subtask);
     };
 
     // capitalize the first letter
@@ -51,10 +56,10 @@ function Subtasks({ projectId }) {
         return `${minutes}m`;
     };   
     
-    const handleDelete = (projectId, subtaskId) => {
-        console.log(projectId);
-        console.log(subtaskId);
-        fetch(`/projects/${projectId}/subtasks/${subtaskId}`, {
+    const handleDelete = () => {
+        if (!subtaskToDelete) return;
+
+        fetch(`/projects/${projectId}/subtasks/${subtaskToDelete._id}`, {
             method: 'DELETE',
         })
         .then(response => {
@@ -62,10 +67,11 @@ function Subtasks({ projectId }) {
                 throw new Error(`Failed to delete subtask: ${response.statusText}`);
             }
             // remove the deleted subtask from the state
-            setSubtasks(prevSubtasks => prevSubtasks.filter(subtask => subtask._id !== subtaskId));
+            setSubtasks(prevSubtasks => prevSubtasks.filter(subtask => subtask._id !== subtaskToDelete._id));
+            setShowDeletePopup(false);
+            setSubtaskToDelete(null);
         })
         .catch(error => {
-            console.error('Delete error:', error);
             setError(error.message);  // set error message
         });
     };
@@ -78,7 +84,7 @@ function Subtasks({ projectId }) {
                         <i className="fa-solid fa-wand-magic-sparkles"></i>
                         <p>AI-generated subtasks</p>
                     </div>
-                    <button className='add-task-button' onClick={togglePopup}>
+                    <button className='add-task-button' onClick={toggleAddPopup}>
                         <i className="fa-solid fa-circle-plus"></i>
                     </button>
                 </div>
@@ -101,7 +107,7 @@ function Subtasks({ projectId }) {
                                     </div>
                                     <div className='edit'>
                                         <i className="fa-regular fa-pen-to-square"></i>
-                                        <i className="fa-regular fa-trash-can" onClick={() => handleDelete(projectId, subtask._id)}></i>
+                                        <i className="fa-regular fa-trash-can" onClick={() => toggleDeletePopup(subtask)}></i>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +120,12 @@ function Subtasks({ projectId }) {
                     </button>
                 </div>
             </div>
-            <AddSubtaskPopUp show={showPopup} onClose={togglePopup} />
+            <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} />
+            <DeleteSubtaskPopUp 
+                show={showDeletePopup} 
+                onClose={() => setShowDeletePopup(false)} 
+                onConfirm={handleDelete} 
+            />
         </div>
     );
 }
