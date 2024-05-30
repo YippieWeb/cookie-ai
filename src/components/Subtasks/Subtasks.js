@@ -35,6 +35,19 @@ function Subtasks({ projectId }) {
         setShowPopup(!showPopup); 
     };
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    const formatTime = (minutes) => {
+        const hours = Math.floor(minutes / 60);
+        const remainingMinutes = minutes % 60;
+        if (hours > 0) {
+            return `${hours}h ${remainingMinutes > 0 ? `${remainingMinutes}m` : ''}`;
+        }
+        return `${minutes}m`;
+    };    
+
     return (
         <div className='subtasks'>
             <div className='wrapper'>
@@ -57,11 +70,11 @@ function Subtasks({ projectId }) {
                                 <div className='tools'>
                                     <div className='priority'>
                                         <div className={`level ${subtask.priority}`}>
-                                            <p>{subtask.priority}</p>
+                                            <p>{capitalizeFirstLetter(subtask.priority)}</p>
                                         </div>
                                         <div className='time'>
                                             <i className="fa-regular fa-clock"></i>
-                                            <p><span>{subtask.time}m</span> estimated</p>
+                                            <p><span>{formatTime(subtask.timeEstimated)}</span> estimated</p>
                                         </div>
                                     </div>
                                     <div className='edit'>

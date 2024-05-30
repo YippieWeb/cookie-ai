@@ -125,15 +125,28 @@
   margin-right: 20px;
 }
 
-/* high level */
-.subtasks .subtask .tools .level.high p {
-  background-color: #f7e4e0;
+/* critical level */
+.subtasks .subtask .tools .level.critical p {
+  background-color: #F7E4E0;
   color: #FF5630;
 }
 
-.subtasks .subtask .tools .level.medium p {
-  background-color: #f9e7d1;
+/* high level */
+.subtasks .subtask .tools .level.high p {
+  background-color: #F9E7D1;
   color: #FF8B00;
+}
+
+/* medium level */
+.subtasks .subtask .tools .level.medium p {
+  background-color: #fff0b3a5;
+  color: #FFAB00;
+}
+
+/* low level */
+.subtasks .subtask .tools .level.low p {
+  background-color: #ABF5C166;
+  color: #00875A;
 }
 
 .subtasks .subtask .tools .time {
