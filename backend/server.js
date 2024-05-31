@@ -143,6 +143,22 @@ app.delete('/projects/:projectId/subtasks/:subtaskId', async (req, res) => {
     }
 });
 
+// route to add a new subtask
+app.post('/projects/:projectId/subtasks', async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.projectId);
+        if (!project) {
+            return res.status(404).send('Project not found');
+        }
+
+        project.subtasks.push(req.body);
+        await project.save();
+        res.status(201).json(project.subtasks[project.subtasks.length - 1]);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
 // prepare for deployment to "render"
 app.use(express.static(path.join(__dirname, "../build")));
 

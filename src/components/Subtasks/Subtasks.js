@@ -76,6 +76,28 @@ function Subtasks({ projectId }) {
         });
     };
 
+    const handleAdd = (newSubtask) => {
+        fetch(`/projects/${projectId}/subtasks`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newSubtask),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to add subtask: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            setSubtasks(prevSubtasks => [...prevSubtasks, data]);
+        })
+        .catch(error => {
+            setError(error.message);
+        });
+    };
+
     return (
         <div className='subtasks'>
             <div className='wrapper'>
@@ -120,7 +142,7 @@ function Subtasks({ projectId }) {
                     </button>
                 </div>
             </div>
-            <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} />
+            <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} onAddSubtask={handleAdd} />
             <DeleteSubtaskPopUp 
                 show={showDeletePopup} 
                 onClose={() => setShowDeletePopup(false)} 
