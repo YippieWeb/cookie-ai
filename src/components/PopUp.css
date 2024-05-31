@@ -145,24 +145,29 @@
   background-color: #DE350B;
 }
 
-/* add subtask specific styling */
+/* add and edit subtask specific styling */
+.edit-subtask .popup-content,
 .add-subtask .popup-content {
   height: 360px;
 }
 
+.edit-subtask .popup-content textarea,
 .add-subtask .popup-content textarea {
   margin-bottom: 10px;
 }
 
+.edit-subtask .popup-content .priority,
 .add-subtask .popup-content .priority {
   display: flex;
   padding: 10px 0 30px 0;
 }
 
+.edit-subtask .popup-content .level,
 .add-subtask .popup-content .level {
   margin-right: 30px;
 }
 
+.edit-subtask .popup-content .level p,
 .add-subtask .popup-content .level p {
   padding: 1px 8px;
   font-size: 10px;
@@ -170,19 +175,23 @@
   color: #6B778C;
 }
 
+.edit-subtask .popup-content .priority i,
 .add-subtask .popup-content .priority i {
   font-size: 18px;
   padding: 5px 8px 0 0;
 }
 
+.edit-subtask .popup-content .priority i.fa-fire,
 .add-subtask .popup-content .priority i.fa-fire {
   color: #FF7452;
 }
 
+.edit-subtask .popup-content .priority,
 .add-subtask .popup-content .priority p {
   font-size: 14px;
 }
 
+.edit-subtask .popup-content #priority-options,
 .add-subtask .popup-content #priority-options {
   text-align: center;
   border: none;
@@ -196,14 +205,18 @@
   margin: 0 5px;
 }
 
+.edit-subtask .popup-content .time,
 .add-subtask .popup-content .time {
   display: flex;
 }
 
+.edit-subtask .popup-content .time i.fa-stopwatch,
 .add-subtask .popup-content .time i.fa-stopwatch {
   color: #8993A4;
 }
 
+.edit-subtask .popup-content .time #hours-options,
+.edit-subtask .popup-content .time #minutes-options,
 .add-subtask .popup-content .time #hours-options,
 .add-subtask .popup-content .time #minutes-options {
   text-align: center;
@@ -218,12 +231,14 @@
   margin: 0 5px;
 }
 
+.edit-subtask .popup-content .time span,
 .add-subtask .popup-content .time span {
   padding: 5px;
   font-size: 14px;
   color: #8993A4;
 }
 
+.edit-subtask .popup-content .time p,
 .add-subtask .popup-content .time p {
   color: #6B778C;
   font-size: 14px;

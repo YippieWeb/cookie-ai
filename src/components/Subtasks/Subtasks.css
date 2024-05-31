@@ -170,6 +170,10 @@
   color: #FF5630;
 }
 
+.subtasks .subtask .tools .edit i.fa-pen-to-square:hover {
+  color: #172B4D;
+}
+
 .subtasks .add-task-button {
   background-color: transparent;
   border: none;

@@ -159,6 +159,31 @@ app.post('/projects/:projectId/subtasks', async (req, res) => {
     }
 });
 
+// route to edit a subtask
+app.put('/projects/:projectId/subtasks/:subtaskId', async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.projectId);
+        if (!project) {
+            return res.status(404).send('Project not found');
+        }
+
+        const subtask = project.subtasks.id(req.params.subtaskId);
+        if (!subtask) {
+            return res.status(404).send('Subtask not found');
+        }
+
+        subtask.name = req.body.name;
+        subtask.description = req.body.description;
+        subtask.priority = req.body.priority;
+        subtask.timeEstimated = req.body.timeEstimated;
+
+        await project.save();
+        res.status(200).json(subtask);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
 // prepare for deployment to "render"
 app.use(express.static(path.join(__dirname, "../build")));
 

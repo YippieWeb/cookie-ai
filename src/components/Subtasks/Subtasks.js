@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Subtasks.css';
 import AddSubtaskPopUp from './AddSubtaskPopUp';
+import EditSubtaskPopUp from './EditSubtaskPopUp';
 import DeleteSubtaskPopUp from './DeleteSubtaskPopUp';
 
 function Subtasks({ projectId }) {
     const [subtasks, setSubtasks] = useState([]);
     const [showAddPopup, setShowAddPopup] = useState(false);
+    const [showEditPopup, setShowEditPopup] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [subtaskToDelete, setSubtaskToDelete] = useState(null);
+    const [subtaskToEdit, setSubtaskToEdit] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -20,33 +23,34 @@ function Subtasks({ projectId }) {
                     return response.json();
                 })
                 .then(data => {
-                    setSubtasks(data.subtasks || []);  // set subtasks, defaulting to empty if none
-                    setError(null);  // clear any previous errors
+                    setSubtasks(data.subtasks || []);
+                    setError(null);
                 })
                 .catch(error => {
-                    setError(error.message);  // set error message
-                    setSubtasks([]);  // reset subtasks on error
+                    setError(error.message);
+                    setSubtasks([]);
                 });
         }
     }, [projectId]);
 
-    // toggle add subtask popup
     const toggleAddPopup = () => {
-        setShowAddPopup(!showAddPopup); 
+        setShowAddPopup(!showAddPopup);
     };
 
-    // toggle delete subtask popup
+    const toggleEditPopup = (subtask) => {
+        setShowEditPopup(!showEditPopup);
+        setSubtaskToEdit(subtask);
+    };
+
     const toggleDeletePopup = (subtask) => {
         setShowDeletePopup(!showDeletePopup);
         setSubtaskToDelete(subtask);
     };
 
-    // capitalize the first letter
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    // convert the time from minutes to [] hours [] minutes
     const formatTime = (minutes) => {
         const hours = Math.floor(minutes / 60);
         const remainingMinutes = minutes % 60;
@@ -54,8 +58,8 @@ function Subtasks({ projectId }) {
             return `${hours}h ${remainingMinutes > 0 ? `${remainingMinutes}m` : ''}`;
         }
         return `${minutes}m`;
-    };   
-    
+    };
+
     const handleDelete = () => {
         if (!subtaskToDelete) return;
 
@@ -66,17 +70,16 @@ function Subtasks({ projectId }) {
             if (!response.ok) {
                 throw new Error(`Failed to delete subtask: ${response.statusText}`);
             }
-            // remove the deleted subtask from the state
             setSubtasks(prevSubtasks => prevSubtasks.filter(subtask => subtask._id !== subtaskToDelete._id));
             setShowDeletePopup(false);
             setSubtaskToDelete(null);
         })
         .catch(error => {
-            setError(error.message);  // set error message
+            setError(error.message);
         });
     };
 
-    const handleAdd = (newSubtask) => {
+    const handleAddSubtask = (newSubtask) => {
         fetch(`/projects/${projectId}/subtasks`, {
             method: 'POST',
             headers: {
@@ -92,6 +95,28 @@ function Subtasks({ projectId }) {
         })
         .then(data => {
             setSubtasks(prevSubtasks => [...prevSubtasks, data]);
+        })
+        .catch(error => {
+            setError(error.message);
+        });
+    };
+
+    const handleEditSubtask = (updatedSubtask) => {
+        fetch(`/projects/${projectId}/subtasks/${updatedSubtask._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedSubtask),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to update subtask: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            setSubtasks(prevSubtasks => prevSubtasks.map(subtask => subtask._id === data._id ? data : subtask));
         })
         .catch(error => {
             setError(error.message);
@@ -128,7 +153,7 @@ function Subtasks({ projectId }) {
                                         </div>
                                     </div>
                                     <div className='edit'>
-                                        <i className="fa-regular fa-pen-to-square"></i>
+                                        <i className="fa-regular fa-pen-to-square" onClick={() => toggleEditPopup(subtask)}></i>
                                         <i className="fa-regular fa-trash-can" onClick={() => toggleDeletePopup(subtask)}></i>
                                     </div>
                                 </div>
@@ -142,7 +167,8 @@ function Subtasks({ projectId }) {
                     </button>
                 </div>
             </div>
-            <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} onAddSubtask={handleAdd} />
+            <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} onAddSubtask={handleAddSubtask} />
+            <EditSubtaskPopUp show={showEditPopup} onClose={() => setShowEditPopup(false)} onEditSubtask={handleEditSubtask} subtask={subtaskToEdit} />
             <DeleteSubtaskPopUp 
                 show={showDeletePopup} 
                 onClose={() => setShowDeletePopup(false)} 
