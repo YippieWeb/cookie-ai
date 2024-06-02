@@ -6,7 +6,7 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState('medium');
     const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(5);
+    const [minutes, setMinutes] = useState(0);
 
     // error handling
     const [nameError, setNameError] = useState(false);
@@ -130,7 +130,7 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
                             </select>
                             <span>hours</span>
                             <select id="minutes-options" name="minutes-options" className="time-selector" value={minutes} onChange={(e) => setMinutes(e.target.value)}>
-                                <option value="5">5</option>
+                                <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                                 <option value="45">45</option>

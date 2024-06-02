@@ -67,6 +67,10 @@
   color: #172B4D;
 }
 
+.instructions textarea::placeholder {
+  color: #8993A4;
+}
+
 .instructions .send-button {
   width: 35px;
   height: 35px;
