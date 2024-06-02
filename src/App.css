@@ -15,7 +15,7 @@ h1, h2, h3, p {
 .columns {
   display: flex;
   justify-content: space-between;
-  min-height: calc(100vh - 63px);
+  min-height: calc(100vh - 70px);
 }
 
 .project-column {

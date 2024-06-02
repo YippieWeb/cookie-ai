@@ -46,6 +46,27 @@
   margin: 0 5px;
 } */
 
+.subtasks .subtasks-container {
+  width: 350px;
+  max-height: 550px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.subtasks .fade-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 300px;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  pointer-events: none;
+  z-index: 1;
+}
+
 .subtasks .export .export-button {
   display: flex;
   border: 2px solid #B3D4FF;
@@ -67,12 +88,15 @@
 }
 
 .subtasks .subtask {
-  min-width: 300px;
+  width: 330px;
   position: relative;
   display: flex;
   background-color: #F5F7FA;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.subtasks .subtask:not(:last-child) {
   margin-bottom: 20px;
 }
 
@@ -174,22 +198,36 @@
   color: #172B4D;
 }
 
-.subtasks .add-task-button {
-  background-color: transparent;
-  border: none;
-}
-
-.subtasks .add-task-button i {
-  font-size: 30px;
-  color: #0b66e4;
-  transition: .3s ease;
-}
-
-.subtasks .add-task-button i:hover {
-  color: #0052CC;
-}
-
 .projects .projects-container .delete-button i {
   color: #6B778C;
   transition: .3s ease;
 }
+
+.subtasks .add-task-button {
+  display: flex;
+  border: 2px solid #B3D4FF;
+  border-radius: 6px;
+  padding: 10px 20px;
+  background-color: #0b66e4;
+  color: #fff;
+  transition: .3s ease;
+}
+
+.subtasks .add-task-button:hover {
+  background-color: #0052CC;
+}
+
+.subtasks .add-task-button i {
+  font-size: 14px;
+  padding-right: 10px;
+  color: #fff;
+}
+
+.subtasks .add-task-button p {
+  font-family: 'Inter', sans-serif;
+  margin: auto;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+

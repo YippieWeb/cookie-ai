@@ -64,10 +64,10 @@ function Instructions({ projectId }) {
                             </p>
                         </div>
                     </div>
-                    <p>Paste your assignment instructions below.</p>
                 </div>
                 <textarea 
                     className='instruction'
+                    placeholder="Paste in your assignment instructions."
                     value={instructionText}
                     onChange={(e) => setInstructionText(e.target.value)}
                     onBlur={updateInstructionText}
@@ -77,7 +77,7 @@ function Instructions({ projectId }) {
                 <div className='generate'>
                     <button className='generate-button'>
                         <i className="fa-solid fa-wand-magic-sparkles"></i>
-                        <p>Generate</p>
+                        <p>Generate subtasks</p>
                     </button>
                 </div>
                 <div className='upload'>

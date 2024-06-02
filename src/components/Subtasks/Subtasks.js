@@ -131,9 +131,9 @@ function Subtasks({ projectId }) {
                         <i className="fa-solid fa-wand-magic-sparkles"></i>
                         <p>AI-generated subtasks</p>
                     </div>
-                    <button className='add-task-button' onClick={toggleAddPopup}>
+                    {/* <button className='add-task-button' onClick={toggleAddPopup}>
                         <i className="fa-solid fa-circle-plus"></i>
-                    </button>
+                    </button> */}
                 </div>
                 <div className='subtasks-container'>
                     {subtasks.map((subtask) => (
@@ -161,11 +161,15 @@ function Subtasks({ projectId }) {
                         </div>
                     ))}
                 </div>
-                <div className='export'>
+                <button className='add-task-button' onClick={toggleAddPopup}>
+                    <i className="fa-solid fa-plus"></i>
+                    <p>Add a subtask</p>
+                </button>
+                {/* <div className='export'>
                     <button className='export-button'>
                         <p>Export</p>
                     </button>
-                </div>
+                </div> */}
             </div>
             <AddSubtaskPopUp show={showAddPopup} onClose={toggleAddPopup} onAddSubtask={handleAddSubtask} />
             <EditSubtaskPopUp show={showEditPopup} onClose={() => setShowEditPopup(false)} onEditSubtask={handleEditSubtask} subtask={subtaskToEdit} />
