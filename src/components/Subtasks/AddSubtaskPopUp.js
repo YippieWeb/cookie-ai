@@ -55,6 +55,20 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
         onAddSubtask(newSubtask);
         onClose();
     };
+
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        if (nameError) {
+            setNameError(false);
+        }
+    };
+
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+        if (descriptionError) {
+            setDescriptionError(false);
+        }
+    };
     
     return (
         <div className='add-subtask'>
@@ -71,7 +85,8 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
                             type="text"
                             placeholder="Subtask name"
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={handleNameChange}
+                            onFocus={() => setNameError(false)}
                             className={nameError ? 'error' : ''}
                         />
                         {nameError && (
@@ -84,7 +99,8 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
                         <textarea
                             placeholder="Subtask description"
                             value={description}
-                            onChange={(e) => setDescription(e.target.value)}
+                            onChange={handleDescriptionChange}
+                            onFocus={() => setDescriptionError(false)}
                             className={descriptionError ? 'error' : ''}
                         ></textarea>
                         {descriptionError && (
