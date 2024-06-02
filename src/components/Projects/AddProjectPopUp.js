@@ -43,6 +43,20 @@ const AddProjectPopUp = ({ show, onClose, onAddProject }) => {
     onClose();
   };
 
+  const handleNameChange = (e) => {
+    setProjectName(e.target.value);
+    if (nameError) {
+        setNameError(false);
+    }
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+    if (descriptionError) {
+        setDescriptionError(false);
+    }
+  };
+
   return (
     <div className='add-project'>
       <div className="popup-overlay" onClick={onClose}>
@@ -58,7 +72,8 @@ const AddProjectPopUp = ({ show, onClose, onAddProject }) => {
                       type="text"
                       placeholder="Project Name"
                       value={projectName}
-                      onChange={(e) => setProjectName(e.target.value)}
+                      onChange={handleNameChange}
+                      onFocus={() => setNameError(false)}
                       className={nameError ? 'error' : ''}
                   />
                   {nameError && (
@@ -71,7 +86,8 @@ const AddProjectPopUp = ({ show, onClose, onAddProject }) => {
                   <textarea
                       placeholder="Project Description"
                       value={description}
-                      onChange={(e) => setDescription(e.target.value)}
+                      onChange={handleDescriptionChange}
+                      onFocus={() => setDescriptionError(false)}
                       className={descriptionError ? 'error' : ''}
                   ></textarea>
                   {descriptionError && (
