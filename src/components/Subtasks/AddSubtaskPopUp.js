@@ -8,6 +8,10 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(15);
 
+    // error handling
+    const [nameError, setNameError] = useState(false);
+    const [descriptionError, setDescriptionError] = useState(false);
+
     useEffect(() => {
         if (show) {
             // reset all fields when the popup is shown
@@ -16,6 +20,8 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
             setPriority('medium');
             setHours(0);
             setMinutes(15);
+            setNameError(false);
+            setDescriptionError(false);
         }
     }, [show]);
 
@@ -24,6 +30,26 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
     }
 
     const handleAddSubtask = () => {
+        let hasError = false;
+
+        if (!name.trim()) {
+            setNameError(true);
+            hasError = true;
+        } else {
+            setNameError(false);
+        }
+
+        if (!description.trim()) {
+            setDescriptionError(true);
+            hasError = true;
+        } else {
+            setDescriptionError(false);
+        }
+
+        if (hasError) {
+            return;
+        }
+
         const timeEstimated = parseInt(hours) * 60 + parseInt(minutes);
         const newSubtask = { name, description, priority, timeEstimated };
         onAddSubtask(newSubtask);
@@ -40,17 +66,33 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Subtask name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <textarea
-                        placeholder="Subtask description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
+                    <div className='field name'>
+                        <input
+                            type="text"
+                            placeholder="Subtask name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className={nameError ? 'error' : ''}
+                        />
+                        {nameError && (
+                            <div className="error-message">
+                                <i className="fa-solid fa-exclamation-circle"></i> Please enter a name
+                            </div>
+                        )}
+                    </div>
+                    <div className='field description'>
+                        <textarea
+                            placeholder="Subtask description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            className={descriptionError ? 'error' : ''}
+                        ></textarea>
+                        {descriptionError && (
+                            <div className="error-message">
+                                <i className="fa-solid fa-exclamation-circle"></i> Please enter a description
+                            </div>
+                        )}
+                    </div>
                     <div className='priority'>
                         <i className="fa-solid fa-fire"></i>
                         <div className='level'>

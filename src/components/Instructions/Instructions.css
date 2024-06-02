@@ -100,7 +100,7 @@
 .instructions .generate .generate-button {
   display: flex;
   border: 2px solid #B3D4FF;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 20px;
   background-color: #0b66e4;
   color: #fff;
