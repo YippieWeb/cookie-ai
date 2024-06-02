@@ -48,8 +48,8 @@
 
 .subtasks .export .export-button {
   display: flex;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid #B3D4FF;
+  border-radius: 8px;
   padding: 10px 15px;
   background-color: #0b66e4;
   color: #fff;

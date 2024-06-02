@@ -5,7 +5,7 @@ const DeleteSubtaskPopUp = ({ show, onClose, onConfirm }) => {
     if (!show) return null;
   
     return (
-      <div className='delete-subtask'>
+      <div className='delete subtask'>
         <div className="popup-overlay" onClick={onClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
           <div className='top'>
@@ -25,4 +25,4 @@ const DeleteSubtaskPopUp = ({ show, onClose, onConfirm }) => {
     );
   };
   
-  export default DeleteSubtaskPopUp;
+  export default DeleteSubtaskPopUp; 

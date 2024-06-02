@@ -1,4 +1,4 @@
-import React, { useState}  from 'react';
+import React, { useState, useEffect } from 'react';
 import '../PopUp.css';
 
 const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
@@ -6,7 +6,18 @@ const AddSubtaskPopUp = ({ show, onClose, onAddSubtask }) => {
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState('medium');
     const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
+    const [minutes, setMinutes] = useState(15);
+
+    useEffect(() => {
+        if (show) {
+            // reset all fields when the popup is shown
+            setName('');
+            setDescription('');
+            setPriority('medium');
+            setHours(0);
+            setMinutes(15);
+        }
+    }, [show]);
 
     if (!show) {
         return null;

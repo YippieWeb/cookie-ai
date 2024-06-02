@@ -5,7 +5,7 @@ const DeleteProjectPopUp = ({ show, onClose, onConfirm }) => {
   if (!show) return null;
 
   return (
-    <div className='delete-project'>
+    <div className='delete project'>
       <div className="popup-overlay" onClick={onClose}>
         <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         <div className='top'>
@@ -25,4 +25,4 @@ const DeleteProjectPopUp = ({ show, onClose, onConfirm }) => {
   );
 };
 
-export default DeleteProjectPopUp; 
+export default DeleteProjectPopUp;

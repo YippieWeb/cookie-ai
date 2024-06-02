@@ -74,15 +74,21 @@ function Instructions({ projectId }) {
                     disabled={!!error}
                 ></textarea>
                 {error && <p className='error'>{error}</p>}
+                <div className='generate'>
+                    <button className='generate-button'>
+                        <i className="fa-solid fa-wand-magic-sparkles"></i>
+                        <p>Generate</p>
+                    </button>
+                </div>
                 <div className='upload'>
-                    <p>or</p>
+                    {/* <p>or</p>
                     <button className='upload-button' disabled={!!error}>
                         <p>Upload PDF</p>
                         <i className="fa-solid fa-arrow-up-from-bracket"></i>
                     </button>
                     <button className='send-button' disabled={!!error}>
                         <i className="fa-solid fa-paper-plane"></i>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 /* pop up window styling */
-/* shared between add project, delete project, and add subtask */
 
 .popup-overlay {
   position: fixed;
@@ -120,28 +119,24 @@
 }
 
 /* delete project & subtask specific styling */
-.delete-subtask p,
-.delete-project p {
+.delete p {
   color: #505F79;
   font-size: 14px;
   line-height: 26px;
   padding-bottom: 25px;
 }
 
-.delete-subtask .popup-content,
-.delete-project .popup-content {
+.delete .popup-content {
   height: 170px;
   width: 300px;
   padding: 30px;
 }
 
-.delete-subtask .confirm-button,
-.delete-project .confirm-button {
+.delete .confirm-button {
   background-color: #FF5630;
 }
 
-.delete-subtask .confirm-button:hover,
-.delete-project .confirm-button:hover {
+.delete .confirm-button:hover {
   background-color: #DE350B;
 }
 

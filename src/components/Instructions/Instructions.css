@@ -90,6 +90,46 @@
   font-size: 14px;
 }
 
+
+/* generate subtasks button */
+.instructions .generate {
+  display: flex;
+  padding-top: 20px;
+}
+
+.instructions .generate .generate-button {
+  display: flex;
+  border: 2px solid #B3D4FF;
+  border-radius: 8px;
+  padding: 10px 20px;
+  background-color: #0b66e4;
+  color: #fff;
+  transition: .3s ease;
+}
+
+.instructions .generate .generate-button:hover {
+  background-color: #0052CC;
+}
+
+.instructions .upload p {
+  padding-top: 10px;
+}
+
+.instructions .generate .generate-button p { 
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.instructions .generate .generate-button i {
+  font-size: 14px;
+  padding-right: 10px;
+  color: #fff;
+}
+
+
+/* upload PDF button */
 .instructions .upload {
   display: flex;
   padding-top: 20px;
