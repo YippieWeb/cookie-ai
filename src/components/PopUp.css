@@ -126,8 +126,8 @@
 }
 
 .cancel-button {
-  border: 1.5px solid #EBECF0;
   background-color: #fff;
+  border: 1.5px solid #EBECF0;
   color: #172B4D;
 }
 
@@ -155,6 +155,7 @@
 
 .delete .confirm-button {
   background-color: #FF5630;
+  border: 2px solid #FFBDAD;
 }
 
 .delete .confirm-button:hover {

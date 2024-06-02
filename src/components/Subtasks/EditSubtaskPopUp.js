@@ -6,7 +6,11 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState('medium');
     const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
+    const [minutes, setMinutes] = useState(5);
+
+    // error handling
+    const [nameError, setNameError] = useState(false);
+    const [descriptionError, setDescriptionError] = useState(false);
 
     useEffect(() => {
         if (subtask) {
@@ -25,6 +29,26 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
     }
 
     const handleEditSubtask = () => {
+        let hasError = false;
+
+        if (!name.trim()) {
+            setNameError(true);
+            hasError = true;
+        } else {
+            setNameError(false);
+        }
+
+        if (!description.trim()) {
+            setDescriptionError(true);
+            hasError = true;
+        } else {
+            setDescriptionError(false);
+        }
+
+        if (hasError) {
+            return;
+        }
+
         const timeEstimated = parseInt(hours) * 60 + parseInt(minutes);
         const updatedSubtask = { ...subtask, name, description, priority, timeEstimated };
         onEditSubtask(updatedSubtask);
@@ -41,17 +65,33 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Subtask name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <textarea
-                        placeholder="Subtask description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
+                    <div className='field name'>
+                        <input
+                            type="text"
+                            placeholder="Subtask name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className={nameError ? 'error' : ''}
+                        />
+                        {nameError && (
+                            <div className="error-message">
+                                <i className="fa-solid fa-exclamation-circle"></i> Please enter a name
+                            </div>
+                        )}
+                    </div>
+                    <div className='field description'>
+                        <textarea
+                            placeholder="Subtask description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            className={descriptionError ? 'error' : ''}
+                        ></textarea>
+                        {descriptionError && (
+                            <div className="error-message">
+                                <i className="fa-solid fa-exclamation-circle"></i> Please enter a description
+                            </div>
+                        )}
+                    </div>
                     <div className='priority'>
                         <i className="fa-solid fa-fire"></i>
                         <div className='level'>
@@ -74,7 +114,7 @@ const EditSubtaskPopUp = ({ show, onClose, onEditSubtask, subtask }) => {
                             </select>
                             <span>hours</span>
                             <select id="minutes-options" name="minutes-options" className="time-selector" value={minutes} onChange={(e) => setMinutes(e.target.value)}>
-                                <option value="00">00</option>
+                                <option value="5">5</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                                 <option value="45">45</option>
