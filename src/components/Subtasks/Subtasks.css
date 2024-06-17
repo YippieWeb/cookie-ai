@@ -151,26 +151,26 @@
 
 /* critical level */
 .subtasks .subtask .tools .level.critical p {
-  background-color: #F7E4E0;
-  color: #FF5630;
+  background-color: #F87168;
+  color: #5D1F1A;
 }
 
 /* high level */
 .subtasks .subtask .tools .level.high p {
-  background-color: #F9E7D1;
-  color: #FF8B00;
+  background-color: #FEA363;
+  color: #702E00;
 }
 
 /* medium level */
 .subtasks .subtask .tools .level.medium p {
-  background-color: #fff0b3a5;
-  color: #FFAB00;
+  background-color: #F6CC47;
+  color: #533F03;
 }
 
 /* low level */
 .subtasks .subtask .tools .level.low p {
-  background-color: #ABF5C166;
-  color: #00875A;
+  background-color: #4CCE97;
+  color: #174B35;
 }
 
 .subtasks .subtask .tools .time {
