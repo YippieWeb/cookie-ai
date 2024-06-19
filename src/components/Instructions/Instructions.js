@@ -104,7 +104,7 @@ function Instructions({ projectId }) {
                 <div className='header'>
                     <div className='title-container' ref={titleRef}>
                         {isEditingTitle ? (
-                            <input 
+                            <input
                                 type='text' 
                                 value={title} 
                                 onChange={handleTitleChange}

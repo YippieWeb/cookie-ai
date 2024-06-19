@@ -45,6 +45,18 @@
   display: inline-block;
 }
 
+.instructions .header .title-container input {
+  width: 100%;
+  margin: 20px 0;
+  outline: none;
+  border: none;
+  color: #172B4D;
+  font-family: inherit;
+  font-size: 20px; 
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .instructions .header h2 {
   margin: 0;
   font-size: 20px;
@@ -99,7 +111,6 @@
   font-size: 14px;
 }
 
-
 /* generate subtasks button */
 .instructions .generate {
   display: flex;
@@ -136,7 +147,6 @@
   padding-right: 10px;
   color: #fff;
 }
-
 
 /* upload PDF button */
 .instructions .upload {
