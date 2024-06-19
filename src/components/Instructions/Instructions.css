@@ -40,6 +40,11 @@
   color: #6B778C;
 }
 
+.instructions .header .title-container {
+  position: relative;
+  display: inline-block;
+}
+
 .instructions .header h2 {
   margin: 0;
   font-size: 20px;

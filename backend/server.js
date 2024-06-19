@@ -84,11 +84,26 @@ app.delete('/projects/:id', async (req, res) => {
 });
 
 // route to update instructionText for a specific project
+// app.put('/projects/:projectId', async (req, res) => {
+//     const { projectId } = req.params;
+//     const { instructionText } = req.body;
+//     try {
+//         const project = await Project.findByIdAndUpdate(projectId, { instructionText }, { new: true });
+//         res.status(200).json(project);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// });
+
+// Route to update project details
 app.put('/projects/:projectId', async (req, res) => {
     const { projectId } = req.params;
-    const { instructionText } = req.body;
+    const { instructionText, projectName } = req.body;
     try {
-        const project = await Project.findByIdAndUpdate(projectId, { instructionText }, { new: true });
+        const project = await Project.findByIdAndUpdate(projectId, { instructionText, projectName }, { new: true });
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
         res.status(200).json(project);
     } catch (error) {
         res.status(500).json({ message: error.message });

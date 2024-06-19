@@ -1,12 +1,14 @@
-import logo from '../assets/logo-blue.png';
-import React, { useState, useEffect } from 'react';
+import logo from '../assets/logo-blue.png'; 
+import React, { useState, useEffect, useRef } from 'react';
 import './Instructions.css';
 
 function Instructions({ projectId }) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [instructionText, setInstructionText] = useState('');
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [error, setError] = useState(null);
+    const titleRef = useRef(null);
 
     useEffect(() => {
         if (projectId) {
@@ -33,6 +35,18 @@ function Instructions({ projectId }) {
         }
     }, [projectId]);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (titleRef.current && !titleRef.current.contains(event.target)) {
+                setIsEditingTitle(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [titleRef]);
+
     async function updateInstructionText () {
         fetch(`/projects/${projectId}`, {
             method: 'PUT',
@@ -45,6 +59,41 @@ function Instructions({ projectId }) {
         .catch(error => console.error('Error saving instruction text:', error));
     }
 
+    const debounce = (func, delay) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), delay);
+        };
+    };
+
+    const updateTitle = debounce((newTitle) => {
+        fetch(`/projects/${projectId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ projectName: newTitle }),
+        })
+        .then(response => response.json())
+        .catch(error => console.error('Error updating title:', error));
+    }, 1000);
+
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+        updateTitle(e.target.value);
+    };
+
+    const handleBlur = () => {
+        setIsEditingTitle(false);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setIsEditingTitle(false);
+        }
+    };
+
     return (
         <div className='instructions'>
             <div className='wrapper'>
@@ -53,7 +102,22 @@ function Instructions({ projectId }) {
                     <span>Cookie AI</span>
                 </div>
                 <div className='header'>
-                    <h2>{title || 'Add a new project'}</h2>
+                    <div className='title-container' ref={titleRef}>
+                        {isEditingTitle ? (
+                            <input 
+                                type='text' 
+                                value={title} 
+                                onChange={handleTitleChange}
+                                onBlur={handleBlur}
+                                onKeyDown={handleKeyDown}
+                                autoFocus
+                            />
+                        ) : (
+                            <h2 onClick={() => setIsEditingTitle(true)}>
+                                {title || 'Add a new project'}
+                            </h2>
+                        )}
+                    </div>
                     <div className='desc'>
                         <div className='left'>
                             <p>Description</p>
