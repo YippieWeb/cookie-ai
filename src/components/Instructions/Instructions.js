@@ -7,8 +7,10 @@ function Instructions({ projectId }) {
     const [description, setDescription] = useState('');
     const [instructionText, setInstructionText] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [isEditingDescription, setIsEditingDescription] = useState(false);
     const [error, setError] = useState(null);
     const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
 
     useEffect(() => {
         if (projectId) {
@@ -40,12 +42,15 @@ function Instructions({ projectId }) {
             if (titleRef.current && !titleRef.current.contains(event.target)) {
                 setIsEditingTitle(false);
             }
+            if (descriptionRef.current && !descriptionRef.current.contains(event.target)) {
+                setIsEditingDescription(false);
+            }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [titleRef]);
+    }, [titleRef, descriptionRef]);
 
     async function updateInstructionText () {
         fetch(`/projects/${projectId}`, {
@@ -79,18 +84,45 @@ function Instructions({ projectId }) {
         .catch(error => console.error('Error updating title:', error));
     }, 1000);
 
+    const updateDescription = debounce((newDescription) => {
+        fetch(`/projects/${projectId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ description: newDescription }),
+        })
+        .then(response => response.json())
+        .catch(error => console.error('Error updating description:', error));
+    }, 1000);
+
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
         updateTitle(e.target.value);
     };
 
-    const handleBlur = () => {
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+        updateDescription(e.target.value);
+    };
+
+    const handleTitleBlur = () => {
         setIsEditingTitle(false);
     };
 
-    const handleKeyDown = (e) => {
+    const handleDescriptionBlur = () => {
+        setIsEditingDescription(false);
+    };
+
+    const handleTitleKeyDown = (e) => {
         if (e.key === 'Enter') {
             setIsEditingTitle(false);
+        }
+    };
+
+    const handleDescriptionKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setIsEditingDescription(false);
         }
     };
 
@@ -108,13 +140,13 @@ function Instructions({ projectId }) {
                                 type='text' 
                                 value={title} 
                                 onChange={handleTitleChange}
-                                onBlur={handleBlur}
-                                onKeyDown={handleKeyDown}
+                                onBlur={handleTitleBlur}
+                                onKeyDown={handleTitleKeyDown}
                                 autoFocus
                             />
                         ) : (
                             <h2 onClick={() => setIsEditingTitle(true)}>
-                                {title || 'Add a new project'}
+                                {title || "Title"}
                             </h2>
                         )}
                     </div>
@@ -122,10 +154,21 @@ function Instructions({ projectId }) {
                         <div className='left'>
                             <p>Description</p>
                         </div>
-                        <div className='right'>
-                            <p className='description'>
-                                {description}
-                            </p>
+                        <div className='right' ref={descriptionRef}>
+                            {isEditingDescription ? (
+                                <textarea
+                                    rows="1"
+                                    value={description}
+                                    onChange={handleDescriptionChange}
+                                    onBlur={handleDescriptionBlur}
+                                    onKeyDown={handleDescriptionKeyDown}
+                                    autoFocus
+                                />
+                            ) : (
+                                <p className='description' onClick={() => setIsEditingDescription(true)}>
+                                    {description || "Add a description"}
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>

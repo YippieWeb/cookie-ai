@@ -27,6 +27,7 @@
 .instructions .header .desc {
   display: flex;
   padding-bottom: 20px;
+  width: 100%;
 }
 
 .instructions .header .desc .left p {
@@ -34,10 +35,30 @@
   padding-right: 20px;
 }
 
+.instructions .header .right {
+  width: 100%;
+  height: auto;
+}
+
 .instructions .header .right p.description {
   margin: 0;
   line-height: 24px;
   color: #6B778C;
+  width: calc(100% - 16px);
+}
+
+.instructions .header .right textarea {
+  width: calc(100% - 16px);
+  transform: translateX(0px) translateY(-5px);
+  border-radius: 5px;
+  padding: 4px 8px;
+  line-height: 24px;
+  /* outline: none;
+  border: none; */
+  color: #6B778C;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px; 
+  resize: vertical;
 }
 
 .instructions .header .title-container {
@@ -46,8 +67,9 @@
 }
 
 .instructions .header .title-container input {
-  width: 100%;
-  margin: 20px 0;
+  width: 500px;
+  margin: 20px 0 18.5px 0;
+  transform: translateX(-2px) translateY(-0.5px);
   outline: none;
   border: none;
   color: #172B4D;
@@ -70,11 +92,11 @@
   color: #172B4D;
 }
 
-.instructions textarea {
+.instructions textarea.instruction {
   width: calc(100% - 30px);
   height: 300px;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
   border: 1.5px solid #DFE1E6;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
   resize: none;
@@ -84,7 +106,7 @@
   color: #172B4D;
 }
 
-.instructions textarea::placeholder {
+.instructions textarea.instruction::placeholder {
   color: #8993A4;
 }
 

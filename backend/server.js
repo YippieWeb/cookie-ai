@@ -95,12 +95,12 @@ app.delete('/projects/:id', async (req, res) => {
 //     }
 // });
 
-// Route to update project details
+// Route to update project details (title, description, and instruction)
 app.put('/projects/:projectId', async (req, res) => {
     const { projectId } = req.params;
-    const { instructionText, projectName } = req.body;
+    const { instructionText, projectName, description } = req.body;
     try {
-        const project = await Project.findByIdAndUpdate(projectId, { instructionText, projectName }, { new: true });
+        const project = await Project.findByIdAndUpdate(projectId, { instructionText, projectName, description }, { new: true });
         if (!project) {
             return res.status(404).json({ message: 'Project not found' });
         }
